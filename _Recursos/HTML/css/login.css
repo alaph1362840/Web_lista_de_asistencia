@@ -7,14 +7,9 @@ html, body{
   
   
   body {
-    background: #43e5d2;
-    background: -moz-linear-gradient(45deg, #43e5d2 0%, #85ebd3 10%, #c5f2d5 29%, #c0f2d5 32%, #e9f6d8 43%, #f6f9d7 52%, #e9f6d8 63%, #c5f2d5 71%, #c0f2d5 84%, #9beed4 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, #43e5d2), color-stop(10%, #85ebd3), color-stop(29%, #c5f2d5), color-stop(32%, #c0f2d5), color-stop(43%, #e9f6d8), color-stop(52%, #f6f9d7), color-stop(63%, #e9f6d8), color-stop(71%, #c5f2d5), color-stop(84%, #c0f2d5), color-stop(100%, #9beed4));
-    background: -webkit-linear-gradient(45deg, #43e5d2 0%, #85ebd3 10%, #c5f2d5 29%, #c0f2d5 32%, #e9f6d8 43%, #f6f9d7 52%, #e9f6d8 63%, #c5f2d5 71%, #c0f2d5 84%, #9beed4 100%);
-    background: -o-linear-gradient(45deg, #43e5d2 0%, #85ebd3 10%, #c5f2d5 29%, #c0f2d5 32%, #e9f6d8 43%, #f6f9d7 52%, #e9f6d8 63%, #c5f2d5 71%, #c0f2d5 84%, #9beed4 100%);
-    background: -ms-linear-gradient(45deg, #43e5d2 0%, #85ebd3 10%, #c5f2d5 29%, #c0f2d5 32%, #e9f6d8 43%, #f6f9d7 52%, #e9f6d8 63%, #c5f2d5 71%, #c0f2d5 84%, #9beed4 100%);
-    background: linear-gradient(45deg, #43e5d2 0%, #85ebd3 10%, #c5f2d5 29%, #c0f2d5 32%, #e9f6d8 43%, #f6f9d7 52%, #e9f6d8 63%, #c5f2d5 71%, #c0f2d5 84%, #9beed4 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#43e5d2', endColorstr='#9beed4', GradientType=1 ); }
+    background: rgb(195,170,135);
+    background: linear-gradient(107deg, rgba(195,170,135,1) 8%, rgba(230,214,184,1) 49%, rgba(205,176,135,1) 89%);
+  }
     
   .etiqueta {
     color: white;
@@ -35,7 +30,7 @@ html, body{
 
 .contImg{
   width: 100%;
-  background-color: #00CCCA;
+  background-color: #3FA55D;
 }
 
 .imgLogin{
@@ -79,24 +74,28 @@ html, body{
 
 
 #btn_login {
-  background-color: #2d8d68;   
+  background-color: #19582C;   
   color: white;
   border-radius: 10px;
 }
 
 
 .btnGuardarUser{
-  background-color: #2f4a3f;   
+  background-color: #B26967;   
   color: rgb(237, 244, 240);
   border-radius: 10px;
   font-weight: bold;
 }
 .btnGuardarUser:hover{
+  transform: scale(1.05);
   color: white !important;
+}
+.btnGuardarUser:active{
+  transform: scale(1);
 }
 
 .bm{
-  background-color: #00BCB5;   
+  background-color: #19582C;   
   color: white;  
 }
 
