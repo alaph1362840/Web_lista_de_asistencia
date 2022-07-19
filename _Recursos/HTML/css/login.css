@@ -21,43 +21,28 @@ html, body{
     font-family: PekKomikSans; }
   
   .cuadro_login {
+    /* border-radius: 0px;
     border-style: solid;
-    border-color: #00BCB5;
-    background-color: #00CCCA;
-    border-radius: 0px;
+    border-color: #00BCB5; */
+    background-color: #ffffff;    
     box-shadow: 5px 5px 5px #493b3b; }
   
 .tittulo_login {
-    color: white;
+    color: rgb(5, 5, 5);
     font-family: CaviarDreams_Bold;
     font-size: 2em; 
 }
-  
-  
-  
-  
-  
-  .rombo {
-    width: 25px;
-    height: 25px;
-    background-color: #00CCCA;
-    transform: rotate(45deg);
-    position: relative;
-    margin-top: -35px;
-    border-top-style: solid;
-    border-left-style: solid;
-    border-left-color: #00BCB5;
-    border-top-color: #00BCB5; }
-  
-  .icono_superior {
-    width: 110px;
-    height: 110px; }
-  
-  .linea {
-    width: 90%;
-    height: 4px;
-    border-radius: 20px;
-    background-color: #198B87; }
+
+.contImg{
+  width: 100%;
+  background-color: #00CCCA;
+}
+
+.imgLogin{
+  height: 220px;
+  width: 220px;
+ 
+}
 
 .iconoU{
     border-style: solid;
