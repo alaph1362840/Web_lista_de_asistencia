@@ -25,3 +25,13 @@
   @font-face {
     font-family: CasuaBold;
     src: url(tipografias/CasuaBold.otf); }
+
+    /* Letters for Learners.ttf */
+
+  @font-face {
+    font-family: LettersForLearners;
+    src: url(tipografias/LettersForLearners.ttf); }
+  
+  @font-face {
+    font-family: KGPrimaryPenmanshipLined;
+    src: url(tipografias/KGPrimaryPenmanshipLined.ttf); }

@@ -1,0 +1,91 @@
+
+#btnAgregarGrado{
+    background-color: #EEB438;
+    /* bordes */
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: white;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: white;
+    /* tipografia */
+    font-weight: bolder;
+    color: rgb(63, 62, 62);
+}
+
+#btnAgregarGrado:hover{
+    background-color: #f3bf4f;
+}
+
+
+
+.contImagen{
+    width: 70px;
+    height: 70px;    
+    padding: 0%;    
+}
+
+.CtIma1{
+    background-color: #C13641;
+    border-color: #ffffff;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.CtIma2{
+    background-color: #C13641;
+    border-color: #ffffff;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.CtIma2:hover{
+    background-color: #cd4550;
+}
+
+.contImagen{
+    width: 70px;
+    height: 70px;    
+    padding: 0%;    
+}
+
+.imgen{
+    width: 70px;
+}
+
+.contText{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fffefe;
+    background-color: #434335;
+    color: #f9f3f3;
+}
+
+/* MODAL */
+.barrasModal{
+    background-color: #3DA25C;
+    color: #fbfaf7;
+}
+
+.iconoM{
+    background-color: #C13641;
+    color: white;
+}
+
+#btnCancelAGrupo{
+    background-color: #dea935;
+}
+#btnAddGrupo{
+    background-color: #97efb1;
+}
+
+.contImagen{
+    width: 70px;
+    height: 70px;    
+    padding: 0%;    
+}
+
+.imgen{
+    width: 70px;
+}
+

@@ -1,0 +1,210 @@
+#btnAddEstudiante{
+    background-color: #EEB438;
+    /* bordes */
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: white;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: white;
+    /* tipografia */
+    font-weight: bolder;
+    color: rgb(63, 62, 62);
+}
+
+#btnAddEstudiante:hover{
+    background-color: #f3bf4f;
+}
+
+#btnAddLista{
+    color: rgb(6, 18, 7);
+    background-color: rgb(209, 240, 167);
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    margin-left: 1px;
+}
+
+#fechal{
+    color: rgb(6, 18, 7);
+    background-color: rgb(209, 240, 167);
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    margin-right: 1px;
+}
+
+#expUno{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(10, 11, 10);
+    background-color: rgb(173, 235, 149);
+    color: black;
+    font-size: 1.2em;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+#expUno:hover{
+    background-color: rgb(155, 221, 129);
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+}
+#expAll{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(9, 9, 9);
+    background-color: rgb(173, 235, 149);
+    color: black;
+    font-size: 1.2em;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+#expAll:hover{
+    background-color: rgb(155, 221, 129);
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+
+/* MODAL */
+.barrasModal{
+    background-color: #3DA25C;
+    color: #fbfaf7;
+}
+
+.iconoM{
+    background-color: #C13641;
+    color: white;
+}
+
+#btnCancelAGrupo{
+    background-color: #dea935;
+}
+#btnAddGrupo{
+    background-color: #97efb1;
+}
+
+.contImagen{
+    width: 70px;
+    height: 70px;    
+    padding: 0%;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;    
+}
+
+.imgen{
+    width: 70px;
+}
+
+.contImagen2{
+    width: 70px;
+    height: 70px;    
+    padding: 0%;    
+}
+
+.imgen2{
+    width: 70px;
+    height: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+.hora2{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;    
+}
+
+.horaE1{
+    background-color: #E6E6E6;
+    color: #040404;
+}
+
+.horaE2{
+    background-color: #D0DDD3;
+    color: #2D440F;
+}
+.horaE3{
+    background-color: #F3D6A3;
+    color: #0a0a0a;
+}
+
+.boxAsis{
+    background-color: #edf1c9;
+    font-family: KGPrimaryPenmanshipLined;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #2D440F;    
+}
+
+
+.contImagen3{
+    width: 70px;
+    height: 70px;    
+    padding: 0%;
+    background: url(../img/asistencia/btn0101.png);
+    background-size: 70px 70px;  
+}
+
+.contImagen3:hover{
+    background: url(../img/asistencia/btn0102.png);
+    background-size: 70px 70px;
+    cursor: pointer;
+    transform: scale(1.05);  
+}
+
+.contImagen3:active{
+    background: url(../img/asistencia/btn0103.png);
+    background-size: 70px 70px;
+    cursor: pointer;
+    transform: scale(1);  
+}
+
+.contImagen4{
+    width: 70px;
+    height: 70px;    
+    padding: 0%;
+    background: url(../img/asistencia/btn0201.png);
+    background-size: 70px 70px;  
+}
+
+.contImagen4:hover{
+    background: url(../img/asistencia/btn0202.png);
+    background-size: 70px 70px;
+    cursor: pointer;
+    transform: scale(1.05);  
+}
+
+.contImagen4:active{
+    background: url(../img/asistencia/btn0203.png);
+    background-size: 70px 70px;
+    cursor: pointer;
+    transform: scale(1);  
+}
+
+.contImagen5{
+    width: 70px;
+    height: 70px;    
+    padding: 0%;
+    background: url(../img/asistencia/btn0301.png);
+    background-size: 70px 70px;  
+}
+
+.contImagen5:hover{
+    background: url(../img/asistencia/btn0302.png);
+    background-size: 70px 70px;
+    cursor: pointer;
+    transform: scale(1.05);  
+}
+
+.contImagen5:active{
+    background: url(../img/asistencia/btn0303.png);
+    background-size: 70px 70px;
+    cursor: pointer;
+    transform: scale(1);  
+}

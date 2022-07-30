@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de asistencia</title>
+    <!-- Establece el icono de la pagina -->
+    <link rel="icon" type="image/png" href="img/Escuela.png" />
+    <!-- LIBRERIAS CSS-->
+    <link rel="stylesheet" href="librerias/bootstrap-5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="librerias/fontawesome-5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="librerias/tipografia/tipografia.css">
+    <link rel="stylesheet" href="librerias/imgeSelet/css/dd.css">
+
+    <!-- MIS CSS -->
+    <link rel="stylesheet" href="css/generales.css">
+    <link rel="stylesheet" href="css/01_Grados.css">
+</head>
+
+<body class="d-flex align-items-center">
+    <!-- BARRA DE NAVEGACION -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top menuSuperior">
+        <div class="container-fluid">
+            <!-- Brand/logo -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/LogoNavbar.svg" class="mr-2" alt="logo" style="width:40px;">&nbsp; BDAC SOFTWARE
+            </a>
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                <ul class="navbar-nav ">
+                    <li class="nav-item ">
+                        <a class="nav-link active" href="#">
+                            <i class="fas fa-school"></i>&nbsp; GRADOS
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-users"></i>&nbsp; USUARIOS
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html"><i class="fad fa-sign-out-alt"></i>&nbsp; SALIR</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- CONTENIDO -->
+    <div class="container contenido">
+        <h1 class="text-center mb-0 mt-3 tituloPrincipal">NOMBRE DE ESCUELA</h1>
+        <h5 class="text-center mt-0 subTituloPrincipal"><u>LISTA DE GRADOS.</u></h5>
+        <div class="row mb-4">
+            <div id="btnAgregarGrado" data-bs-toggle="modal" data-bs-target="#modalAddGrado" class="col-auto p-2 boton mx-auto">&nbsp;&nbsp;<i class="fas fa-plus-circle"></i> AGREGAR NIVEL &nbsp;&nbsp;</div>
+        </div>
+        <!-- 0 grupo -->
+        <div class="row mt-2 texGrado">
+            <div class="col-lg-10 mx-auto border">
+                <div class="row">
+                    <div class="col-lg-2 col CtIma1 d-flex align-items-center">
+                        <div class="contImagen mx-auto">
+                            <img class="imgen" src="img/grados/SalaCuna.svg" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-7 contText d-flex align-items-center align-content-center">
+                        <h1 class="text-center mx-auto">SALA CUNA.</h1>
+                    </div>
+                    <div class="col-lg-2 col CtIma2 boton d-flex align-items-center">
+                        <div class="contImagen mx-auto ">
+                            <img class="imgen" src="img/grados/FlechaGrado.svg" alt="" srcset="">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- 1 grupo -->
+        <div class="row mt-2 texGrado">
+            <div class="col-lg-10 mx-auto border">
+                <div class="row">
+                    <div class="col-lg-2 col CtIma1  d-flex align-items-center">
+                        <div class="contImagen mx-auto ">
+                            <img class="imgen" src="img/grados/Infantes.svg" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-7 contText d-flex align-items-center align-content-center">
+                        <h1 class="mx-auto text-center">KINDER.</h1>
+                    </div>
+                    <div class="col-lg-2 col CtIma2 boton d-flex align-items-center">
+                        <div class="contImagen mx-auto ">
+                            <img class="imgen" src="img/grados/FlechaGrado.svg" alt="" srcset="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 2 grupo -->
+        <div class="row mt-2 texGrado">
+            <div class="col-lg-10 mx-auto border">
+                <div class="row">
+                    <div class="col-lg-2 col CtIma1  d-flex align-items-center">
+                        <div class="contImagen mx-auto ">
+                            <img class="imgen" src="img/grados/Kinder.svg" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-7 contText d-flex align-items-center align-content-center">
+                        <h1 class=" text-center mx-auto">PREPARATORIA.</h1>
+                    </div>
+                    <div class="col-lg-2 col CtIma2 boton d-flex align-items-center">
+                        <div class="contImagen mx-auto ">
+                            <img class="imgen" src="img/grados/FlechaGrado.svg" alt="" srcset="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ***** MODALES ***** -->
+    <!-- MODAL ADD GRADO -->
+    <div class="modal fade" id="modalAddGrado" tabindex="-1" aria-labelledby="tituloMD2" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="frmAddCita" class="modal-content">
+                <div class="modal-header barrasModal">
+                    <h5 class="modal-title" id="tituloMD2">Agregar Nivel:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- NOMBRE -->
+                    <div class="row">
+                        <label for="txtNombre" class="form-label col-3 my-auto" id="txtNombrel">GRADO:</label>
+                        <div class="col-1 px-0 iconoM d-flex align-items-center">
+                            <i class="fas fa-signature mx-auto"></i>
+                        </div>
+                        <div class="ms-0 ps-0 col-7">
+                            <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
+                        </div>
+                    </div>
+                    <!-- IMAGENE DESCRIPCION -->
+                    <div class="row mt-2">
+                        <label for="listImg" class="form-label col-3 my-auto" id="listImgl">
+                            IMAGEN:
+                        </label>
+                        <div class="col-1 px-0 iconoM d-flex align-items-center">
+                            <i class="fas fa-image mx-auto"></i>
+                        </div>
+                        <div class="ms-0 ps-0 col-7">
+                            <select name="listNewMedicos" id="listImg" class="selectpicker" is="ms-dropdown" required>
+                                <option value="Kinder" data-image="img/select/SinImagen.png" selected> Sin imagen</option>
+                                <option value="SalaCuna" data-image="img/select/SalaCuna25.png"> Bebes</option>
+                                <option value="Infantes" data-image="img/select/Infantes25.png"> Infantes</option>
+                                <option value="Kinder" data-image="img/select/Kinder25.png"> Kinder</option>
+                                <option value="Preparatoria" data-image="img/select/Preparatoria25.png"> Preparatoria</option>
+                                <option value="01" data-image="img/select/01.png"> Primero</option>
+                                <option value="02" data-image="img/select/02.png"> Segundo</option>
+                                <option value="03" data-image="img/select/03.png"> Tercero</option>
+                                <option value="04" data-image="img/select/04.png"> Cuarto</option>
+                                <option value="05" data-image="img/select/05.png"> Quinto</option>
+                                <option value="06" data-image="img/select/06.png"> Sexto</option>
+                                <option value="07" data-image="img/select/07.png"> Septimo</option>
+                                <option value="08" data-image="img/select/08.png"> Octavo</option>
+                                <option value="09" data-image="img/select/09.png"> Noveno</option>
+                                <option value="10" data-image="img/select/10.png"> Decimo</option>
+                                <option value="11" data-image="img/select/11.png"> Onceavo</option>                                
+                            </select>
+                        </div>
+                    </div>                    
+
+                </div>
+                <div class="modal-footer barrasModal">
+                    <button id="btnCancelAGrupo" type="button" class="btn btnCancelar me-1 btnModalCerrar" data-bs-dismiss="modal">
+                        <i class="far fa-times"></i> <i class="inav" id="btnCancelAGrupol">Cancelar</i>
+                    </button>
+                    <button id="btnAddGrupo" type="submit" class="btn btn- ms-0 btnModalConfirmar">
+                        <i class="fas fa-check"></i> <i class="inav" id="btnAddGrupol">Guardar</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- LIBRERIAS JS-->
+    <script src="librerias/jquery-3.6.0.min.js"></script>
+    <script src="librerias/bootstrap-5.0.2/js/bootstrap.min.js"></script>
+    <script src="librerias/imgeSelet/js/dd.min.js"></script>
+    <script>
+        // $('select.selectpicker').selectpicker();
+    </script>
+</body>
+
+</html>
