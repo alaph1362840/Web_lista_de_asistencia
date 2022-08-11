@@ -81,8 +81,7 @@
                     </div>
                 </div>
             </div>            
-        </div>          
-        
+        </div>       
         <div class="row mt-1">
             <div id="btnAddEstudiante" data-bs-toggle="modal" data-bs-target="#modalAddGrado" class="col-auto p-2 boton mx-auto">&nbsp;&nbsp;<i class="fas fa-user-plus"></i> AGREGAR ESTUDIANTE &nbsp;&nbsp;</div>
         </div>
@@ -94,7 +93,8 @@
                     <label class="form-check-label" for="flexSwitchCheckChecked">HABILITAR GRUPO</label>
                 </div>
             </div>            
-        </div> 
+        </div>
+        
         <!-- 0 grupo -->
         <div class="row mb-2  mx-1">
             <div class="col-lg-10 mx-auto">
@@ -201,8 +201,7 @@
                     </div>                    
                 </div>
             </div>            
-        </div>
-        
+        </div>        
         
     </div>
 
@@ -212,49 +211,104 @@
         <div class="modal-dialog">
             <form id="frmAddCita" class="modal-content">
                 <div class="modal-header barrasModal">
-                    <h5 class="modal-title" id="tituloMD2">Agregar Nivel:</h5>
+                    <h5 class="modal-title" id="tituloMD2">Agregar Estudiante:</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- NOMBRE -->
+                    <!-- ESTUDIANTE -->
                     <div class="row">
-                        <label for="txtNombre" class="form-label col-3 my-auto" id="txtNombrel">GRADO:</label>
+                        <label for="txtNombre" class="form-label col-md-3 col-4 my-auto" id="txtNombrel">Estudiante:</label>
                         <div class="col-1 px-0 iconoM d-flex align-items-center">
-                            <i class="fas fa-signature mx-auto"></i>
+                            <i class="fas fa-child mx-auto"></i>
+                            <!-- <i class="fas fa-signature mx-auto"></i> -->
                         </div>
                         <div class="ms-0 ps-0 col-7">
                             <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
                         </div>
                     </div>
-                    <!-- IMAGENE DESCRIPCION -->
+                    <!--RESPONSABLE -->
                     <div class="row mt-2">
-                        <label for="listImg" class="form-label col-3 my-auto" id="listImgl">
-                            IMAGEN:
-                        </label>
+                        <label for="txtNombre" class="form-label col-md-3 col-4 my-auto" id="txtNombrel">Responsable:</label>
                         <div class="col-1 px-0 iconoM d-flex align-items-center">
-                            <i class="fas fa-image mx-auto"></i>
+                            <i class="fas fa-male mx-auto"></i>
+                            <!-- <i class="fas fa-signature mx-auto"></i> -->
                         </div>
                         <div class="ms-0 ps-0 col-7">
-                            <select name="listNewMedicos" id="listImg" class="selectpicker" is="ms-dropdown" required>
-                                <option value="Kinder" data-image="img/select/SinImagen.png" selected> Sin imagen</option>
-                                <option value="SalaCuna" data-image="img/select/SalaCuna25.png"> Bebes</option>
-                                <option value="Infantes" data-image="img/select/Infantes25.png"> Infantes</option>
-                                <option value="Kinder" data-image="img/select/Kinder25.png"> Kinder</option>
-                                <option value="Preparatoria" data-image="img/select/Preparatoria25.png"> Preparatoria</option>
-                                <option value="01" data-image="img/select/01.png"> Primero</option>
-                                <option value="02" data-image="img/select/02.png"> Segundo</option>
-                                <option value="03" data-image="img/select/03.png"> Tercero</option>
-                                <option value="04" data-image="img/select/04.png"> Cuarto</option>
-                                <option value="05" data-image="img/select/05.png"> Quinto</option>
-                                <option value="06" data-image="img/select/06.png"> Sexto</option>
-                                <option value="07" data-image="img/select/07.png"> Septimo</option>
-                                <option value="08" data-image="img/select/08.png"> Octavo</option>
-                                <option value="09" data-image="img/select/09.png"> Noveno</option>
-                                <option value="10" data-image="img/select/10.png"> Decimo</option>
-                                <option value="11" data-image="img/select/11.png"> Onceavo</option>                                
+                            <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
+                        </div>
+                    </div>
+                    <!-- DESICION DE FOTO -->
+                    <div class="row mt-2">
+                        <div class="col-lg-7">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="switchFoto">
+                                <label class="form-check-label" for="switchFoto">Tomar fotografias.</label>
+                            </div>
+                        </div>                        
+                    </div>
+                    <!--SELECCION DE CAMARA -->
+                    <div id="hi1" class="row mt-2">
+                        <label for="txtNombre" class="form-label col-md-3 col-4 my-auto" id="txtNombrel">CAMARA:</label>
+                        <div class="col-1 px-0 iconoM d-flex align-items-center">
+                            <i class="fas fa-list mx-auto"></i>
+                        </div>
+                        <div class="ms-0 ps-0 col-7">
+                            <select class="form-control form-select" name="listaDeDispositivos" id="listaDeDispositivos">
+                                <option>Seleccione camara.</option>
                             </select>
                         </div>
                     </div>                    
+                    <!-- FOTOS -->
+                    <div id="hi2" class="row my-3 d-flex justify-content-center align-items-center h-auto" >
+                        <canvas id="canvas" class="d-none"></canvas>
+                        <!-- FOTO DE ESTUDIANTE -->
+                        <div class=" col-auto cajaFoto me-1">
+                            <video id="video" playsinline autoplay class="videoC m-0"></video>
+                            <img id="imgRefEstudiante" class="videoC" src="img/asistencia/Usuario.png" alt="" srcset="">
+                            <div class="row my-0">
+                                <h6 class="text-center my-auto tituloFoto">Estudiante</h6>
+                            </div>
+                            <div class="row my-0">
+                                <div id="estDesh" class="col-lg-3 d-flex align-items-center rdInfo p-1">
+                                    <i class="far fa-circle mx-auto"></i>
+                                </div>
+                                <div id="estHabi" class="col-lg-3 d-flex align-items-center rdInfo rdInfoA p-1 hide">
+                                    <i class="fas fa-check-circle mx-auto"></i>
+                                </div>
+                                <div id="btnCapturar1" class="col-lg-5 d-flex align-items-center btnCapturar p-1 boton">
+                                    <i class="fas fa-camera-retro mx-auto"></i>
+                                </div>
+                                <div id="btnRefrescar01" class="col-lg-4 d-flex align-items-center btnRefrescar p-1 boton">
+                                    <i class="fas fa-sync mx-auto"></i>
+                                </div>
+                            </div>                            
+                        </div>
+                        <!-- FOTO DE RESPONSABLE-->
+                        <div class=" col-auto cajaFoto">
+                            <video id="video2" playsinline autoplay class="videoC m-0"></video>
+                            <img id="imgRespopnsable" class="videoC" src="img/asistencia/Usuario.png" alt="" srcset="">
+                            <div class="row my-0">
+                                <h6 class="text-center my-auto tituloFoto">Responsable</h6>
+                            </div>
+                            <div class="row my-0">
+                                <div id="resDesh" class="col-lg-3 d-flex align-items-center rdInfo p-1">
+                                    <i class="far fa-circle mx-auto"></i>
+                                </div>
+                                <div id="resHabi" class="col-lg-3 d-flex align-items-center rdInfo rdInfoA p-1 hide">
+                                    <i class="fas fa-check-circle mx-auto"></i>
+                                </div>
+                                <div id="refHabi" class="col-lg-3 d-flex align-items-center rdInfo rdInfoA p-1 hide">
+                                    <i class="fas fa-check-circle mx-auto"></i>
+                                </div>
+                                <div id="btnCapturar2" class="col-lg-5 d-flex align-items-center btnCapturar p-1 boton">
+                                    <i class="fas fa-camera-retro mx-auto"></i>
+                                </div>
+                                <div id="btnRefrescar02" class="col-lg-4 d-flex align-items-center btnRefrescar p-1 boton">
+                                    <i class="fas fa-sync mx-auto"></i>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>                   
 
                 </div>
                 <div class="modal-footer barrasModal">
@@ -273,9 +327,8 @@
     <script src="librerias/jquery-3.6.0.min.js"></script>
     <script src="librerias/bootstrap-5.0.2/js/bootstrap.min.js"></script>
     <script src="librerias/imgeSelet/js/dd.min.js"></script>
-    <script>
-        // $('select.selectpicker').selectpicker();
-    </script>
+    <!-- MIS JS -->
+    <script src="js/02_Asistencia.js"></script>
 </body>
 
 </html>

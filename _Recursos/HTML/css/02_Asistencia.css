@@ -93,8 +93,19 @@
     border-radius: 4px;    
 }
 
+.contImagenC{
+    width: 140px;
+    height: 140px;    
+    padding: 0%;
+}
+
 .imgen{
     width: 70px;
+    max-height: 70px;
+}
+
+.fondo{
+    background-color: #484a44;
 }
 
 .contImagen2{
@@ -207,4 +218,69 @@
     background-size: 70px 70px;
     cursor: pointer;
     transform: scale(1);  
+}
+
+.btnImg{
+    background-color: #fdecc9;
+    border-color: #cab7b9;
+}
+
+.videoC{
+    width: 140px;
+    height: 140px;
+    padding: 0%;
+    margin: 0%;
+    margin-bottom: 0px;
+}
+/* #FD7E14 */
+
+.cajaFoto{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #060a00;
+    background-color: #b1a26e;
+    line-height:0;
+}
+
+.rdInfo{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #060a00;
+    background-color: #d7d5d5;
+}
+
+.btnCapturar{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #060a00;
+    background-color: #2D440F;
+    color: white;
+}
+
+.btnRefrescar{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #060a00;
+    background-color: #FD7E14;
+    color: white;
+}
+
+/* Ocultar elementos con dislplay flex no funciona el show de jquery */
+.hide{
+    display: none !important;
+}
+
+.rdInfoA{
+    background-color: #c1f8ba;
+}
+
+.tituloFoto{
+    background-color: rgb(59, 46, 11);
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ffffff;
+    /* line-height: 5px; */
+    padding:2px;
+
 }
