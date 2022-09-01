@@ -1,0 +1,49 @@
+# database: listaAsistencia
+#--- EMPRESA ---
+# Solo se deberia dar permiso de escritura no de edicion.
+CREATE TABLE Empresa(id_empresa INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                     nombre VARCHAR(60) NOT NULL UNIQUE,
+                     correo VARCHAR(60) NOT NULL,
+                     fecha_IniSuscri DATE NOT NULL DEFAULT CURDATE())CHARSET=utf8 COLLATE utf8_spanish_ci;
+
+#--- USUARIO ---
+#La autoridad puede ser "alta" o "baja"
+CREATE TABLE Usuario(id_usuario INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                     id_empresa INT UNSIGNED NOT NULL,
+                     FOREIGN KEY(id_empresa) REFERENCES Empresa(id_empresa) ON DELETE CASCADE ON UPDATE CASCADE,
+                     usuario VARCHAR(40) NOT NULL UNIQUE,
+                     pass BLOB NOT NULL,
+                     autoridad VARCHAR(25) NOT NULL default 'baja',
+                     habilitado BOOLEAN NOT NULL default '1')CHARSET=utf8 COLLATE utf8_spanish_ci;
+
+#--- GRADO ---
+CREATE TABLE Grado(id_grado INT UNSIGNED UNIQUE AUTO_INCREMENT,
+                     id_empresa INT UNSIGNED NOT NULL,
+                     FOREIGN KEY(id_empresa) REFERENCES Empresa(id_empresa) ON DELETE CASCADE ON UPDATE CASCADE,
+                     nombre VARCHAR(60) NOT NULL,
+                   img VARCHAR(60) NOT NULL DEFAULT 'img/select/SinImagen.svg',
+                     PRIMARY KEY(id_empresa, nombre),
+                     habilitado BOOLEAN NOT NULL default '1')CHARSET=utf8 COLLATE utf8_spanish_ci;
+
+
+#--- Estudiante---
+CREATE TABLE Estudiante(id_estudiante INT UNSIGNED UNIQUE AUTO_INCREMENT,
+                     id_grado INT UNSIGNED NOT NULL,
+                     FOREIGN KEY(id_grado) REFERENCES Grado(id_grado) ON DELETE CASCADE ON UPDATE CASCADE,
+                     nombre VARCHAR(60) NOT NULL,
+                        imgEstudiante VARCHAR(60) NOT NULL,
+                     PRIMARY KEY(id_grado, nombre),
+                        responsable VARCHAR(60) NOT NULL,
+                        imgResponsable VARCHAR(60) NOT NULL,
+                        telefono VARCHAR(60))CHARSET = utf8 COLLATE utf8_spanish_ci;
+
+
+#--- Asistencia---
+CREATE TABLE Asistencia(id_asistencia INT UNSIGNED UNIQUE AUTO_INCREMENT,
+                     id_estudiante  INT UNSIGNED NOT NULL,
+                     FOREIGN KEY(id_estudiante) REFERENCES Estudiante(id_estudiante) ON DELETE CASCADE ON UPDATE CASCADE,
+                     fecha DATE NOT NULL,
+                     PRIMARY KEY(id_estudiante, fecha),
+                        horaEntrada VARCHAR(10) NOT NULL DEFAULT '-- : --',
+                        horaSalida VARCHAR(10) NOT NULL DEFAULT '-- : --') CHARSET = utf8 COLLATE utf8_spanish_ci;
+

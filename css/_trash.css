@@ -1,0 +1,40 @@
+.tituloPrincipal{
+    /* font-family: LettersForLearners; */
+    font-family: CaviarDreams;
+    font-weight: bold;
+}
+
+.subTituloPrincipal{
+    font-family: CaviarDreams;
+}
+
+.texGrado{
+    font-family: KGPrimaryPenmanshipLined;
+}
+
+body{
+    background-color: #D5CFB7;
+}
+.menuSuperior{
+    background-color: #3DA25C !important;
+}
+
+.contenido{
+    margin-top: 70px;
+    user-select: none;
+}
+
+
+
+.boton{
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+}
+
+.boton:hover{
+    transform: scale(1.05);
+}
+.boton:active{
+    transform: scale(1);    
+}

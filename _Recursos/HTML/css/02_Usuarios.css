@@ -1,0 +1,57 @@
+body{
+    background-color: aliceblue;
+}
+
+.barraDeNavegacion{
+    background-color: #00504e !important;
+}
+
+.contenido{
+    margin-top: 100px;
+}
+
+
+/* del css original */
+.barraModal{
+    background-color: #084b2f !important;
+}
+.barraModalE{
+    background-color: #bb9b85 !important;
+}
+
+#btnGuardarC{
+    background-color: #4d9476 !important;
+    border-color: white IM !important;
+}
+
+.btnTabla{
+    background-color: bisque;
+    color: #00504e !important;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #02817f;
+}
+
+.btnConfirmacion{
+    background-color: #cef6e6;
+    color: #00504e;
+}
+
+.btnCancelar{
+    background-color: #f6d1ce;
+    color: #00504e;
+}
+
+
+.boton{
+    cursor: pointer; 
+}
+
+.boton:hover{
+    opacity: 98%;
+    transform: scale(1.02, 1.02);
+}
+
+.boton:active{
+    transform: scale(1, 1);
+}

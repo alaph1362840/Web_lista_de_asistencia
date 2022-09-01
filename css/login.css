@@ -1,0 +1,113 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: none;
+    padding: none; }
+  
+  
+  
+  body {
+    background: rgb(195,170,135);
+    background: linear-gradient(107deg, rgba(195,170,135,1) 8%, rgba(230,214,184,1) 49%, rgba(205,176,135,1) 89%);
+  }
+    
+  .etiqueta {
+    color: white;
+    font-family: PekKomikSans; }
+  
+  .cuadro_login {
+    background-color: #ffffff;    
+    box-shadow: 5px 5px 5px #493b3b; }
+  
+.tittulo_login {
+    color: rgb(5, 5, 5);
+    font-family: CaviarDreams_Bold;
+    font-size: 2em; 
+}
+
+.contImg{
+  width: 100%;
+  background-color: #3FA55D;
+}
+
+.imgLogin{
+  height: 220px;
+  width: 220px;
+}
+
+.iconoU{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #85ebd3;
+    border-top-left-radius: 10px;
+    background-color: rgb(23, 78, 16);
+    color: white;
+}
+
+#txt_user{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;    
+}
+
+
+.iconoP{
+  border-style: solid;
+  border-width: 1px;
+  border-color: #85ebd3;
+  border-bottom-left-radius: 10px;
+  background-color: rgb(23, 78, 16);
+  color: white;
+}
+
+#txt_pass{
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 10px;  
+}
+
+#btn_login {
+  background-color: #19582C;   
+  color: white;
+  border-radius: 10px;
+}
+
+
+.btnGuardarUser{
+  background-color: #9cdd7b;   
+  color: rgb(4, 27, 14);
+  border-radius: 10px;
+  font-weight: bold;
+}
+.btnGuardarUser:hover{
+  transform: scale(1.05);
+  color: rgb(4, 27, 14) !important;
+}
+.btnGuardarUser:active{
+  transform: scale(1);
+}
+
+.bm{
+  background-color: #19582C;   
+  color: white;  
+}
+
+.bb{
+  background-color: #e9f8f8;  
+}
+
+.iconoM{
+  border-style: solid;
+  border-width: 1px;
+  border-color: #85ebd3;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: rgb(23, 78, 16);
+  color: white;
+}
+
+.inav{
+  font-style: normal;
+}

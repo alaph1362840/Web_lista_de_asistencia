@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de asistencia</title>
+    <!-- Establece el icono de la pagina -->
+    <link rel="icon" type="image/png" href="img/Escuela.png" />
+    <!-- LIBRERIAS CSS-->
+    <link rel="stylesheet" href="librerias/bootstrap-5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="librerias/fontawesome-5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="librerias/tipografia/tipografia.css">
+    <link rel="stylesheet" href="librerias/alertifyjs/css/alertify.min.css">
+
+    <!-- MIS CSS -->
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="d-flex align-items-center">    
+    <!-- CONTENIDO -->
+    <div class="container-fluid ">        
+        <div class="row">             
+            <form id="formIngreso" class="col-lg-3 col-md-6 col-sm-10 col-11 cuadro_login mx-auto p-0 " autocomplete="off">
+                <!-- IMAGEN -->
+                <div class="contImg pt-4">
+                    <img class="imgLogin mx-auto d-block " src="img/login/Login3.png" type="image/png">
+                    <img class="img-fluid" src="img/login/OlasBlancas2.svg" >
+                </div>
+                <!-- CUADRO LOGIN -->
+                <div class="px-4 pb-4">
+                    <!-- Nombre o logo de Empresa -->
+                    <div class="row form-group mx-auto">
+                        <h3 id="ti01" class="col-12 text-center tittulo_login">Bienvenido!</h3>
+                    </div>
+                    <!-- input de User -->
+                    <div class="row mt-2 mx-auto">
+                        <div class="col-11 mx-auto ">
+                            <div class="row form-group">
+                                <div class="col-1 px-0 iconoU d-flex align-items-center"><i class="fad fa-user mx-auto"></i></div>                                        
+                                <div class="col-11 p-0">
+                                    <input pattern="[^='\x22!]+" title="CARACTERES NO VÁLIDOS: [ = ' ! '' ]" class="form-control"  autocomplete="false" type="text" placeholder="USUARIO" id="txt_user" name="txt_user" maxlength="40" minlength="4" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- input de password -->
+                    <div class="row mt-2 mx-auto">
+                        <div class="col-11 mx-auto ">
+                            <div class="row form-group">
+                                <div class="col-1 px-0 iconoP d-flex align-items-center"><i class="fad fa-key mx-auto"></i></div>                                        
+                                <div class="col-11 p-0">
+                                    <input pattern="[^='\x22!]+" title="CARACTERES NO VÁLIDOS: [ = ' ! '' ]" class="col-11 form-control" autocomplete="false" type="password" placeholder="CONTRASEÑA" id="txt_pass" name ="txt_pass"  maxlength="25" minlength="5" required>
+                                </div> 
+                            </div>                             
+                        </div>
+                                          
+                    </div>
+                    <!-- Mensaje de error si ocurre -->
+                    <!-- <div class="alert alert-danger mt-1 mb-0" role="alert" id="alerta_error" > Usuario o contraseña incorrecta</div> -->
+                    <!-- Boton enviar -->
+                    <div class="row form-group mx-auto mt-3">
+                        <button type="submit" class="col-11 btn mx-auto boton" id="btn_login"><i class="far fa-arrow-alt-from-left"></i> <strong id="ti02"> INGRESAR</strong></button>
+                    </div>
+                    <div class="row form-group mx-auto mt-1">
+                        <button data-bs-toggle="modal" data-bs-target="#modalRegistro" type="button" class="border border-dark text-dark col-11 btn mx-auto boton"><i class="fas fa-user-plus"></i> <i class="inav" id="ti03">Crear cuenta.</i></button>
+                    </div>
+                </div>
+                  
+                <!-- <h6 class="text-center text-white mt-2 boton border border-light col-11 mx-auto" data-bs-toggle="modal" data-bs-target="#modalRegistro"><i class="fas fa-user-plus"></i> <i class="inav" id="ti03">Registrarse.</i></h6>                 -->
+            </form>
+        </div>               
+    </div>
+
+    <!-- ***** MODALES ***** -->
+    <!-- Modal -->
+    <div class="modal fade" id="modalRegistro" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bm">
+                    <h5 class="modal-title" id="tituloModal">CREAR USUARIO.</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="formRegistro" class="modal-body bb" autocomplete="off">
+                    <div class="row form-group">
+                        <label for="txtEmprReg" class="form-label col-3 my-auto" id="empresa">Instituto:</label>
+                        <div class="col-1 px-0 iconoM d-flex align-items-center"><i class="fas fa-school mx-auto"></i></div>
+                        <div class="ms-0 ps-0 col-8">
+                          <input type="text" name="txtEmprReg" id="txtEmprReg" class="form-control" required>
+                        </div>                      
+                    </div>                    
+                    <div class="row form-group mt-1">
+                        <label for="txtUserReg" class="form-label col-3 my-auto" id="usuarioC">Usuario:</label>
+                        <div class="col-1 px-0 iconoM d-flex align-items-center"><i class="fas fa-user-tie mx-auto"></i></div>
+                        <div class="ms-0 ps-0 col-8">   
+                            <input  pattern="[^='\x22!]+" title="CARACTERES NO VÁLIDOS: [ = ' ! '' ]" type="text" name="txtUserReg" id="txtUserReg" class="form-control" required>
+                        </div>                      
+                    </div>
+                    <div class="row form-group mt-1">
+                        <label for="txtPassReg" class="form-label col-3 my-auto" id="contraC">Contraseña:</label>
+                        <div class="col-1 px-0 iconoM d-flex align-items-center"><i class="fas fa-key mx-auto"></i></div>
+                        <div class="ms-0 ps-0 col-8">
+                            <input  pattern="[^='\x22!]+" title="CARACTERES NO VÁLIDOS: [ = ' ! '' ]" type="password" name="txtPassReg" id="txtPassReg" class="form-control" required minlength="5" autocomplete="false">
+                        </div>                      
+                    </div>                    
+                    <div class="row form-group mt-1">
+                        <label for="txtNombReg" class="form-label col-3 my-auto" id="correoC">Correo:</label>
+                        <div class="col-1 px-0 iconoM d-flex align-items-center"><i class="fas fa-envelope mx-auto "></i></div>
+                        <div class="ms-0 ps-0 col-8">                            
+                          <input type="email" name="txtCorreoReg" id="txtCorreoReg" class="form-control" required>
+                        </div>                      
+                    </div>
+                </form>
+                <div class="modal-footer bm">
+                    <button form="formRegistro" type="submit" class="btn boton btnGuardarUser "><i class="fas fa-save"></i> <i class="inav" id="btnGuardarCC"> Guardar</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIBRERIAS JS-->
+    <script src="librerias/jquery-3.6.0.min.js"></script>
+    <script src="librerias/bootstrap-5.0.2/js/bootstrap.min.js"></script>
+    <script src="librerias/alertifyjs/alertify.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+@font-face {
+    font-family: CaviarDreams_Bold;
+    src: url(tipografias/CaviarDreams_Bold.ttf); }
+  @font-face {
+    font-family: CaviarDreams;
+    src: url(tipografias/CaviarDreams.ttf); }
+  @font-face {
+    font-family: Persippiny;
+    src: url(tipografias/Persippiny.otf); }
+  @font-face {
+    font-family: PekKomikSans;
+    src: url(tipografias/PekKomikSans.ttf); }
+  @font-face {
+    font-family: Fanwood;
+    src: url(tipografias/Fanwood.otf); }
+  @font-face {
+    font-family: Boquern;
+    src: url(tipografias/Boquern.ttf); }
+  @font-face {
+    font-family: Celeste_Hand;
+    src: url(tipografias/Celeste_Hand.ttf); }
+  @font-face {
+    font-family: Casua;
+    src: url(tipografias/Casua.otf); }
+  @font-face {
+    font-family: CasuaBold;
+    src: url(tipografias/CasuaBold.otf); }
+
+    /* Letters for Learners.ttf */
+
+  @font-face {
+    font-family: LettersForLearners;
+    src: url(tipografias/LettersForLearners.ttf); }
+  
+  @font-face {
+    font-family: KGPrimaryPenmanshipLined;
+    src: url(tipografias/KGPrimaryPenmanshipLined.ttf); }
