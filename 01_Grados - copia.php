@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="librerias/fontawesome-5.13.0/css/all.min.css">
     <link rel="stylesheet" href="librerias/tipografia/tipografia.css">
     <link rel="stylesheet" href="librerias/imgeSelet/css/dd.css">
+    <link rel="stylesheet" href="librerias/alertifyjs/css/alertify.min.css">
 
     <!-- MIS CSS -->   
     <link rel="stylesheet" href="css/generales.css">
@@ -61,70 +62,21 @@
     <div id="contenidoGrado" class="container contenido">
         <h1 class="text-center mb-0 mt-3 tituloPrincipal"><?php echo $_SESSION['nombreEmpresa']; ?></h1>
         <h5 class="text-center mt-0 subTituloPrincipal"><u>LISTA DE GRADOS.</u></h5>
+        <!-- BOTON DE HABILITAR EDICION GRADOS-->
+        <div class="row mt-2 mb-4">
+            <div class="col-auto mx-auto">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="habiEdicionG">
+                    <label class="form-check-label" for="habiEdicionG" id="habiEdicionGl">EDICION DE GRADOS</label>
+                </div>
+            </div>            
+        </div>
         <div class="row mb-4">
             <div id="btnAgregarGrado" data-bs-toggle="modal" data-bs-target="#modalAddGrado" class="col-auto p-2 boton mx-auto">&nbsp;&nbsp;<i class="fas fa-plus-circle"></i> AGREGAR NIVEL &nbsp;&nbsp;</div>
         </div>
-        <!-- 0 grupo -->
-        <div class="row mt-2 texGrado">
-            <div class="col-lg-10 mx-auto border">
-                <div class="row">
-                    <div class="col-lg-2 col CtIma1 d-flex align-items-center">
-                        <div class="contImagen2 mx-auto">
-                            <img class="imgen" src="img/grados/SalaCuna.svg" alt="" srcset="">
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-7 contText d-flex align-items-center align-content-center">
-                        <h1 class="text-center mx-auto">SALA CUNA.</h1>
-                    </div>
-                    <div class="col-lg-2 col CtIma2 boton d-flex align-items-center">
-                        <div class="contImagen2 mx-auto ">
-                            <img class="imgen" src="img/grados/FlechaGrado.svg" alt="" srcset="">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div id="cajaPrincipalGrados">
         </div>
-        <!-- 1 grupo -->
-        <div class="row mt-2 texGrado">
-            <div class="col-lg-10 mx-auto border">
-                <div class="row">
-                    <div class="col-lg-2 col CtIma1  d-flex align-items-center">
-                        <div class="contImagen2 mx-auto ">
-                            <img class="imgen" src="img/grados/Infantes.svg" alt="" srcset="">
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-7 contText d-flex align-items-center align-content-center">
-                        <h1 class="mx-auto text-center">KINDER.</h1>
-                    </div>
-                    <div class="col-lg-2 col CtIma2 boton d-flex align-items-center">
-                        <div class="contImagen2 mx-auto ">
-                            <img class="imgen" src="img/grados/FlechaGrado.svg" alt="" srcset="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 2 grupo -->
-        <div class="row mt-2 texGrado">
-            <div class="col-lg-10 mx-auto border">
-                <div class="row">
-                    <div class="col-lg-2 col CtIma1  d-flex align-items-center">
-                        <div class="contImagen2 mx-auto ">
-                            <img class="imgen" src="img/grados/Kinder.svg" alt="" srcset="">
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-7 contText d-flex align-items-center align-content-center">
-                        <h1 class=" text-center mx-auto">PREPARATORIA.</h1>
-                    </div>
-                    <div class="col-lg-2 col CtIma2 boton d-flex align-items-center">
-                        <div class="contImagen2 mx-auto ">
-                            <img class="imgen" src="img/grados/FlechaGrado.svg" alt="" srcset="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <!-- CONTENIDO ASISTENCIA-->
@@ -180,88 +132,129 @@
                 </div>
             </div>            
         </div>
-        <!-- 0 grupo -->
-        <div class="row mb-2  mx-1">
-            <div class="col-lg-10 mx-auto">
-                <div class="row boxAsis px-1">
-                    <!-- IMAGENES DE PADRE E HIJO -->
-                    <div class="col-auto mx-md-0 my-md-0 my-2  mx-auto  d-flex align-items-center justify-content-center  p-0">
-                        <div class="contImagen ">
-                            <img class="imgen" src="img/Escuela.png" alt="" srcset="">
+        <div id="cajaPrincipalAsistencias">
+            <!-- 0 grupo -->
+            <div class="row mb-2  mx-1">
+                <div class="col-lg-10 mx-auto">
+                    <div class="row boxAsis px-1">
+                        <!-- IMAGENES DE PADRE E HIJO -->
+                        <div class="col-auto mx-md-0 my-md-0 my-2  mx-auto  d-flex align-items-center justify-content-center  p-0">
+                            <div class="contImagen ">
+                                <img class="imgen" src="img/Escuela.png" alt="" srcset="">
+                            </div>
+                            <div class="contImagen">
+                                <img class="imgen" src="img/Escuela.png" alt="" srcset="">
+                            </div>
                         </div>
-                        <div class="contImagen">
-                            <img class="imgen" src="img/Escuela.png" alt="" srcset="">
+                        <!-- TEXTO -->
+                        <div class="col-lg-7 col-md-7 col-sm-12 contText ">
+                            <h3 class="text-md-start text-center"><strong class="cAlumno" >ALUMNO: </strong> Orlin Acosta</h3>
+                            <h3 class="text-md-start text-center"><strong class="cPadre" >PADRE: </strong> Brayan Acosta</h1>
                         </div>
+                        <!-- EDICION DE USUARIO -->
+                        <div id="" class=" UserEditDelet hide col-auto d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
+                            <div id="idEstudiante" class="contImagenEdit" data-bs-toggle="modal" data-bs-target="#modalEditEstu">                          
+                            </div>
+                            <div class="contImagenDelet" data-bs-toggle="modal" data-bs-target="#modalDeletEstu">
+                            </div>
+                        </div>                    
+                        <!-- HORA DE ENTRADA Y SALIDA -->
+                        <div id="" class=" horaInOut col-auto  d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
+                            <div class="contImagen2 ">
+                                <img class="imgen2" src="img/asistencia/IN01.png" alt="" srcset="">
+                                <h5 class="hora2 horaE1 ">--:--</h5>                            
+                            </div>
+                            <div class="contImagen2">
+                                <img class="imgen2" src="img/asistencia/IN03.png" alt="" srcset="">
+                                <h5 class="hora2 horaE1 ">--:--</h5>
+                            </div>
+                            <div class="contImagen3 ms-1"></div>
+                        </div>                    
                     </div>
-                    <!-- TEXTO -->
-                    <div class="col-lg-7 col-md-7 col-sm-12 contText ">
-                        <h3 class="text-md-start text-center"><strong class="cAlumno" >ALUMNO: </strong> Orlin Acosta</h3>
-                        <h3 class="text-md-start text-center"><strong class="cPadre" >PADRE: </strong> Brayan Acosta</h1>
+                </div>            
+            </div>       
+            <!-- 1 grupo -->
+            <div class="row mb-2  mx-1">
+                <div class="col-lg-10 mx-auto">
+                    <div class="row boxAsis px-1">
+                        <!-- IMAGENES DE PADRE E HIJO -->
+                        <div class="col-auto mx-md-0 my-md-0 my-2  mx-auto  d-flex align-items-center justify-content-center  p-0">
+                            <div class="contImagen ">
+                                <img class="imgen" src="img/Escuela.png" alt="" srcset="">
+                            </div>
+                            <div class="contImagen">
+                                <img class="imgen" src="img/Escuela.png" alt="" srcset="">
+                            </div>
+                        </div>
+                        <!-- TEXTO -->
+                        <div class="col-lg-7 col-md-7 col-sm-12 contText ">
+                            <h3 class="text-md-start text-center"><strong class="cAlumno" >ALUMNO: </strong> Orlin Acosta</h3>
+                            <h3 class="text-md-start text-center"><strong class="cPadre" >PADRE: </strong> Brayan Acosta</h1>
+                        </div>
+                        <!-- EDICION DE USUARIO -->
+                        <div id="" class=" UserEditDelet hide col-auto d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
+                            <div id="idEstudiante" class="contImagenEdit" data-bs-toggle="modal" data-bs-target="#modalEditEstu">                          
+                            </div>
+                            <div class="contImagenDelet">
+                            </div>
+                        </div>                    
+                        <!-- HORA DE ENTRADA Y SALIDA -->
+                        <div id="" class=" horaInOut col-auto  d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
+                            <div class="contImagen2 ">
+                                <img class="imgen2" src="img/asistencia/IN02.png" alt="" srcset="">
+                                <h5 class="hora2 horaE2 ">--:--</h5>                            
+                            </div>
+                            <div class="contImagen2">
+                                <img class="imgen2" src="img/asistencia/IN03.png" alt="" srcset="">
+                                <h5 class="hora2 horaE1 ">--:--</h5>
+                            </div>
+                            <div class="contImagen4 ms-1"></div>
+                        </div>                    
                     </div>
-                    <!-- EDICION DE USUARIO -->
-                    <div id="" class=" UserEditDelet hide col-auto d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
-                        <div id="idEstudiante" class="contImagenEdit" data-bs-toggle="modal" data-bs-target="#modalEditEstu">                          
+                </div>            
+            </div>
+            <!-- 2 grupo -->
+            <div class="row mb-2  mx-1">
+                <div class="col-lg-10 mx-auto">
+                    <div class="row boxAsis px-1">
+                        <!-- IMAGENES DE PADRE E HIJO -->
+                        <div class="col-auto mx-md-0 my-md-0 my-2  mx-auto  d-flex align-items-center justify-content-center  p-0">
+                            <div class="contImagen ">
+                                <img class="imgen" src="img/Escuela.png" alt="" srcset="">
+                            </div>
+                            <div class="contImagen">
+                                <img class="imgen" src="img/Escuela.png" alt="" srcset="">
+                            </div>
                         </div>
-                        <div class="contImagenDelet" data-bs-toggle="modal" data-bs-target="#modalDeletEstu">
+                        <!-- TEXTO -->
+                        <div class="col-lg-7 col-md-7 col-sm-12 contText ">
+                            <h3 class="text-md-start text-center"><strong class="cAlumno" >ALUMNO: </strong> Orlin Acosta</h3>
+                            <h3 class="text-md-start text-center"><strong class="cPadre" >PADRE: </strong> Brayan Acosta</h1>
                         </div>
-                    </div>                    
-                    <!-- HORA DE ENTRADA Y SALIDA -->
-                    <div id="" class=" horaInOut col-auto  d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
-                        <div class="contImagen2 ">
-                            <img class="imgen2" src="img/asistencia/IN01.png" alt="" srcset="">
-                            <h5 class="hora2 horaE1 ">--:--</h5>                            
-                        </div>
-                        <div class="contImagen2">
-                            <img class="imgen2" src="img/asistencia/IN03.png" alt="" srcset="">
-                            <h5 class="hora2 horaE1 ">--:--</h5>
-                        </div>
-                        <div class="contImagen3 ms-1">
-                        </div>
-                    </div>                    
-                </div>
-            </div>            
-        </div>       
-        <!-- 1 grupo -->
-        <div class="row mb-2  mx-1">
-            <div class="col-lg-10 mx-auto">
-                <div class="row boxAsis px-1">
-                    <!-- IMAGENES DE PADRE E HIJO -->
-                    <div class="col-auto mx-md-0 my-md-0 my-2  mx-auto  d-flex align-items-center justify-content-center  p-0">
-                        <div class="contImagen ">
-                            <img class="imgen" src="img/Escuela.png" alt="" srcset="">
-                        </div>
-                        <div class="contImagen">
-                            <img class="imgen" src="img/Escuela.png" alt="" srcset="">
-                        </div>
+                        <!-- EDICION DE USUARIO -->
+                        <div id="" class=" UserEditDelet hide col-auto d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
+                            <div id="idEstudiante" class="contImagenEdit" data-bs-toggle="modal" data-bs-target="#modalEditEstu">                          
+                            </div>
+                            <div class="contImagenDelet">
+                            </div>
+                        </div>                    
+                        <!-- HORA DE ENTRADA Y SALIDA -->
+                        <div id="" class=" horaInOut col-auto  d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
+                            <div class="contImagen2 ">
+                                <img class="imgen2" src="img/asistencia/IN02.png" alt="" srcset="">
+                                <h5 class="hora2 horaE2 ">--:--</h5>                            
+                            </div>
+                            <div class="contImagen2">
+                                <img class="imgen2" src="img/asistencia/IN04.png" alt="" srcset="">
+                                <h5 class="hora2 horaE3">--:--</h5>
+                            </div>
+                            <div class="contImagen5 ms-1"></div>
+                        </div>                    
                     </div>
-                    <!-- TEXTO -->
-                    <div class="col-lg-7 col-md-7 col-sm-12 contText ">
-                        <h3 class="text-md-start text-center"><strong class="cAlumno" >ALUMNO: </strong> Orlin Acosta</h3>
-                        <h3 class="text-md-start text-center"><strong class="cPadre" >PADRE: </strong> Brayan Acosta</h1>
-                    </div>
-                    <!-- EDICION DE USUARIO -->
-                    <div id="" class=" UserEditDelet hide col-auto d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
-                        <div id="idEstudiante" class="contImagenEdit" data-bs-toggle="modal" data-bs-target="#modalEditEstu">                          
-                        </div>
-                        <div class="contImagenDelet">
-                        </div>
-                    </div>                    
-                    <!-- HORA DE ENTRADA Y SALIDA -->
-                    <div id="" class=" horaInOut col-auto  d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
-                        <div class="contImagen2 ">
-                            <img class="imgen2" src="img/asistencia/IN01.png" alt="" srcset="">
-                            <h5 class="hora2 horaE1 ">--:--</h5>                            
-                        </div>
-                        <div class="contImagen2">
-                            <img class="imgen2" src="img/asistencia/IN03.png" alt="" srcset="">
-                            <h5 class="hora2 horaE1 ">--:--</h5>
-                        </div>
-                        <div class="contImagen3 ms-1">
-                        </div>
-                    </div>                    
-                </div>
-            </div>            
+                </div>            
+            </div>
         </div>
+        
     </div>
 
     <!-- ***** MODALES ***** -->
@@ -538,7 +531,7 @@
     <!-- MODAL ADD GRADO -->
     <div class="modal fade" id="modalAddGrado" tabindex="-1" aria-labelledby="tituloMD2" aria-hidden="true">
         <div class="modal-dialog">
-            <form id="frmAddCita" class="modal-content">
+            <form id="frmAddGrado" class="modal-content">
                 <div class="modal-header barrasModal">
                     <h5 class="modal-title" id="tituloMD2">Agregar Nivel:</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -551,7 +544,7 @@
                             <i class="fas fa-signature mx-auto"></i>
                         </div>
                         <div class="ms-0 ps-0 col-7">
-                            <input type="text" name="txtNombre" id="txtNombre" class="form-control" required>
+                            <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Ej. Primero A 2022" required >
                         </div>
                     </div>
                     <!-- IMAGENE DESCRIPCION -->
@@ -564,22 +557,22 @@
                         </div>
                         <div class="ms-0 ps-0 col-7">
                             <select name="listImg" id="listImg" class="selectpicker" is="ms-dropdown" required>
-                                <option value="Kinder" data-image="img/select/SinImagen.png" selected> Sin imagen</option>
-                                <option value="SalaCuna" data-image="img/select/SalaCuna25.png"> Bebes</option>
-                                <option value="Infantes" data-image="img/select/Infantes25.png"> Infantes</option>
-                                <option value="Kinder" data-image="img/select/Kinder25.png"> Kinder</option>
-                                <option value="Preparatoria" data-image="img/select/Preparatoria25.png"> Preparatoria</option>
-                                <option value="01" data-image="img/select/01.png"> Primero</option>
-                                <option value="02" data-image="img/select/02.png"> Segundo</option>
-                                <option value="03" data-image="img/select/03.png"> Tercero</option>
-                                <option value="04" data-image="img/select/04.png"> Cuarto</option>
-                                <option value="05" data-image="img/select/05.png"> Quinto</option>
-                                <option value="06" data-image="img/select/06.png"> Sexto</option>
-                                <option value="07" data-image="img/select/07.png"> Septimo</option>
-                                <option value="08" data-image="img/select/08.png"> Octavo</option>
-                                <option value="09" data-image="img/select/09.png"> Noveno</option>
-                                <option value="10" data-image="img/select/10.png"> Decimo</option>
-                                <option value="11" data-image="img/select/11.png"> Onceavo</option>                                
+                                <option value = "SinImagen" data-image="img/select/SinImagen.png" selected> Sin imagen</option>
+                                <option value = "SalaCuna25" data-image="img/select/SalaCuna25.png"> Bebes</option>
+                                <option value = "Infantes25" data-image="img/select/Infantes25.png"> Infantes</option>
+                                <option value = "Kinder25" data-image="img/select/Kinder25.png"> Kinder</option>
+                                <option value = "Preparatoria25" data-image="img/select/Preparatoria25.png"> Preparatoria</option>
+                                <option value = "01" data-image="img/select/01.png"> Primero</option>
+                                <option value = "02" data-image="img/select/02.png"> Segundo</option>
+                                <option value = "03" data-image="img/select/03.png"> Tercero</option>
+                                <option value = "04" data-image="img/select/04.png"> Cuarto</option>
+                                <option value = "05" data-image="img/select/05.png"> Quinto</option>
+                                <option value = "06" data-image="img/select/06.png"> Sexto</option>
+                                <option value = "07" data-image="img/select/07.png"> Septimo</option>
+                                <option value = "08" data-image="img/select/08.png"> Octavo</option>
+                                <option value = "09" data-image="img/select/09.png"> Noveno</option>
+                                <option value = "10" data-image="img/select/10.png"> Decimo</option>
+                                <option value = "11" data-image="img/select/11.png"> Onceavo</option>                                
                             </select>
                         </div>
                     </div>                    
@@ -597,13 +590,40 @@
         </div>
     </div>
 
+    <!-- MODAL DELETE GRADO -->
+    <div class="modal fade" id="modalDeletGrado" tabindex="-1" aria-labelledby="tituloMD2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div id="" class="modal-content">
+                <div class="modal-header barrasModal">
+                    <h5 class="modal-title" id="tituloMD2">Agregar Nivel:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="alert alert-danger">Realmente deseas deshabilitar el grado?</h4>
+                </div>
+                <div class="modal-footer barrasModal">
+                    <button type="button" class="btn boton me-1 btnModalCerrar2" data-bs-dismiss="modal">
+                        <i class="far fa-times"></i> <i class="sinFormato btnCancelModal" id="">Cancelar</i>
+                    </button>
+                    <button id="btnDeleteGrupo" type="" class="btn ms-0 btnModalConfirmar">
+                        <i class="fas fa-ban"></i> <i class="sinFormato" id="btnAddGrupol" onclick="deshabilitarGrado()">Deshabilitar</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- LIBRERIAS JS-->
     <script src="librerias/jquery-3.6.0.min.js"></script>
     <script src="librerias/bootstrap-5.0.2/js/bootstrap.min.js"></script>
     <script src="librerias/imgeSelet/js/dd.min.js"></script>
+    <script src="librerias/alertifyjs/alertify.min.js"></script>
     <!-- MIS JS -->
     <!-- SOLO PARA ADMINISTRADORES -->
-    <script src="js/01_Grados.js"></script>
+    <script src="js/01_Grados_0_Camaras.js"></script>
+    <script src="js/01_Grados_1_Grados.js"></script>
+    <script src="js/01_Grados_1_GradosAdmin.js"></script>
+    <script src="js/01_Grados_2_Estudiantes.js"></script>
 </body>
 
 </html>

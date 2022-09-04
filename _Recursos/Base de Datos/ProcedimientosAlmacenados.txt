@@ -89,8 +89,8 @@ END $$ DELIMITER ;
 
 
 #-----------------------------------------  TABLA GRADO ---------------------------------------
-#-- CREAR GRADO
-# ----- CREA UN NUEVO GRADO
+# -- CREAR GRADO
+# -- CREA UN NUEVO GRADO
 DELIMITER $$
 CREATE OR REPLACE PROCEDURE crearGrado(
     IN id_empresai INT,
@@ -116,6 +116,21 @@ BEGIN
         U.habilitado = habilitadoi
     WHERE U.id_grado = id_gradoi;    	
 END $$ DELIMITER ;
+
+
+
+#-- DESHABILITAR GRADO
+DELIMITER $$
+CREATE PROCEDURE deshabilitarGrado(
+    IN id_gradoi INT
+)
+BEGIN
+	UPDATE Grado AS U 
+    SET
+        U.habilitado = 0
+    WHERE U.id_grado = id_gradoi;    	
+END $$ DELIMITER ;
+
 
 
 #-- OBTENER GRADOS SEGUN ID DE LA EMPRESA --
@@ -211,4 +226,15 @@ BEGIN
     WHERE A.id_asistencia = id_asistenciai;    	
 END $$ DELIMITER ;
 
+
+#-- OBTENER ASISTENCIAS SEGUN ID DE GRADO --
+DELIMITER $$
+CREATE PROCEDURE obtenerAsistencias(
+    IN id_gradoi INT UNSIGNED
+)
+BEGIN
+	SELECT E.id_estudiante, E.nombre, E.imgEstudiante, E.responsable, E.imgResponsable, E.telefono, A.id_asistencia, A.fecha, A.horaEntrada, A.horaSalida
+    FROM Estudiante AS E INNER JOIN Asistencia AS A ON E.id_estudiante = A.id_estudiante
+    WHERE E.id_grado = id_gradoi;    
+END $$ DELIMITER ;
 
