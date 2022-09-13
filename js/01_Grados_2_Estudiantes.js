@@ -59,34 +59,36 @@ frmEditEstudiante.addEventListener('submit', (e) => {
 		"responsable":responsable,
 		"imgResponsable":imgResponsable,
 		"telefono":telefono,
-		"id_estudiante":id_estudiante_actualizar
-        
+		"id_estudiante":id_estudiante_actualizar        
     }
     
 	$.ajax({
 		type: "POST",
 		url: "phpConsultas/editarEstudiante.php",
 		data: datos,
-		dataType: "json",        
+		dataType: "json"        
 	})
-	.done(function( data ) {		
+	.done(function( data ) {
+        console.log(data);		
 		if (data.se_ejecuto) {
 			$('#modalEditEstu').modal('hide');
             alertify.success("Estudiante editado con exito.");
+            cargarAsistencias();
 		} else {
 			alertify.error("Error, Al editar usuario datos invalidos.");
 		}				          
 	})
 	.fail(function(jqXHR, textStatus, errorThrown) {
-		alertify.error("Error" + errorThrown);		
+		alertify.error("Error" + errorThrown);
+        console.log("error:" + errorThrown);
+        console.log("textStatus:" + textStatus);
+        console.log(jqXHR);
+
 	});
 });
 
 function actualizarAsistenciaEntrada(id_asistencia) {
-    //var id = ""+ id_asistencia + "HE";   
-	//const horaEntrada  = $(id).text();
     var today = new Date();
-    //const horaEntrada  = today.toLocaleTimeString('en-US');     // hh:mm:ss 
     const horaEntrada = today.getHours() +" : "+ today.getMinutes();
     var datos ={
         "id_asistencia":id_asistencia,
@@ -229,7 +231,7 @@ function crearAsistencias() {
                                     </div>
                                     <!-- EDICION DE USUARIO -->
                                     <div id="" class=" UserEditDelet hide col-auto d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
-                                        <div id="idEstudiante" class="contImagenEdit" data-bs-toggle="modal" data-bs-target="#modalEditEstu">                          
+                                        <div class="contImagenEdit" data-bs-toggle="modal" data-bs-target="#modalEditEstu" onclick="cargarEstudianteActualizar(${element.id_estudiante})">                          
                                         </div>
                                         <div class="contImagenDelet" data-bs-toggle="modal" data-bs-target="#modalDeletEstu">
                                         </div>
@@ -344,7 +346,7 @@ function cargarAsistencias() {
                                     </div>
                                     <!-- EDICION DE USUARIO -->
                                     <div id="" class=" UserEditDelet hide col-auto d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
-                                        <div id="idEstudiante" class="contImagenEdit" data-bs-toggle="modal" data-bs-target="#modalEditEstu">                          
+                                        <div class="contImagenEdit" data-bs-toggle="modal" data-bs-target="#modalEditEstu" onclick="cargarEstudianteActualizar(${element.id_estudiante})">                          
                                         </div>
                                         <div class="contImagenDelet" data-bs-toggle="modal" data-bs-target="#modalDeletEstu">
                                         </div>
@@ -406,4 +408,22 @@ $(document).ready(function () {
 
 function cargarEstudianteActualizar(id) {
     id_estudiante_actualizar = id;
+    var centinela = "";
+    listaAsistencias.forEach(element => {
+        if (element.id_estudiante == id) {
+            centinela = element;
+        }
+    });
+    console.log("Centinela:");
+    console.log(centinela);
+    if (typeof centinela.nombre != 'undefined') {
+        $("#txtNombreE").val(centinela.nombre);
+        $("#txtNombreER").val(centinela.responsable);
+        $("#txtEtelefono").val(centinela.telefono);
+        //$("#imgRefEstudianteE").attr("src");
+        var urlImgEstu = "data:image/png;base64," + centinela.imgEstudiante; 
+        $("#imgRefEstudianteE").attr("src", urlImgEstu);
+        var urlImgRespo = "data:image/png;base64," + centinela.imgResponsable; 
+        $("#imgRespopnsableE").attr("src", urlImgRespo);        
+    }
 }

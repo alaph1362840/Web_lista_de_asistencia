@@ -5,13 +5,9 @@
     $sql = '
         CALL obtenerAsistencias('.$_POST['id_grado'].', "'.$_POST['fecha'].'");
     ';
-    //echo "sql: ".$sql;
 
     $consulta = new Consulta($sql, $tipo_consulta);
     $respuesta = $consulta->ejecutar_consulta();
-    //echo $respuesta["datos"];
-    //print_r($respuesta);
-     
     echo json_encode($respuesta);
     $consulta->limpiarRecursos();  
 ?>

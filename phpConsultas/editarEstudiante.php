@@ -11,8 +11,10 @@
     $sql = '
         CALL actualizarEstudiatne('.$_POST['id_estudiante'].', "'.$_POST['nombre'].'", "'.$imagenCodificadaLimpia1.'" , "'.$_POST['responsable'].'"'.', "'.$imagenCodificadaLimpia2.'",  "'.$_POST['telefono'].'");
     ';
+    //echo "Sql: ".$sql;
     $consulta = new Consulta($sql, $tipo_consulta);
-    $respuesta = $consulta->ejecutar_consulta();             
+    $respuesta = $consulta->ejecutar_consulta();
+    //echo "respuesta: ".$respuesta; 
     echo json_encode($respuesta);
     $consulta->limpiarRecursos();  
 ?>
