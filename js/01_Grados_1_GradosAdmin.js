@@ -4,8 +4,6 @@ $("#habiEdicionG").change(function (e) {
 });
 
 function comprobarOcultos() {
-    console.log("Hola desde comprobacion radioButons = ");
-    console.log($("#habiEdicionG").prop('checked'));
 
     if( $("#habiEdicionG").prop('checked') ) {
         $(".deshabiGrado").removeClass('hide');

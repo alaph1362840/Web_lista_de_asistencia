@@ -94,14 +94,6 @@
     background-color: #f3bf4f;
 }
 
-#btnAddLista{
-    color: rgb(6, 18, 7);
-    background-color: rgb(209, 240, 167);
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    margin-left: 1px;
-}
 
 #fechal{
     color: rgb(6, 18, 7);
@@ -448,4 +440,22 @@
 #btnDeleteGrupo{
     background-color: #791414 !important;
     color: white;
+}
+
+#btnExportar{
+    background-color: #91c7e0 !important;
+    color: rgb(15, 15, 15);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #040404;
+    margin-right: 0px;
+}
+
+#btnAddLista{
+    color: rgb(6, 18, 7);
+    background-color: rgb(209, 240, 167);
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    margin-left: 0px;
 }

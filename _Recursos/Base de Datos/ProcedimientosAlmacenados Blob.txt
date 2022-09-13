@@ -1,0 +1,247 @@
+#------------------------------ TABLA USUARIO Y EMPRESA -------------------------------
+#-- CREA UN USUARIO ADMINISTRADOR Y UNA EMPRESA SE USA EN EL LOGIN
+# ----- DEVOLVE -1 SI NO HAY RESULTADO Y EL REGISTRO (USUARIO) INSERTADO DE HABERSE REALIZADO -----------
+DELIMITER $$
+CREATE PROCEDURE crearEmpresaUsuario(
+    IN nombreEmpresa VARCHAR(60),
+    IN correoE VARCHAR(60),
+    IN usuario VARCHAR(40),
+    IN pass BLOB
+)
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION 
+    BEGIN
+        SELECT -1 AS id_usuario;
+    	ROLLBACK;
+    END;
+    START TRANSACTION;
+    	INSERT INTO Empresa (nombre, correo) VALUES(nombreEmpresa, correoE);
+        INSERT INTO Usuario (id_empresa, usuario, pass, autoridad )
+        VALUES(LAST_INSERT_ID(), usuario, pass, "alta"); 
+        SELECT U.id_usuario, U.usuario, U.autoridad, U.habilitado, U.id_empresa, nombreEmpresa AS nombreEmpresa FROM Usuario AS U WHERE U.usuario = usuario;
+    COMMIT;
+END $$ DELIMITER ;
+
+
+
+#-- LOGIN --
+# ----- DEVOLVE EL USUARIO DE HABERSE ENCONTRADO -----------
+DELIMITER $$
+CREATE PROCEDURE login(
+    IN usuarioI VARCHAR(40),
+    IN passI BLOB
+)
+BEGIN
+    SELECT U.id_usuario, U.usuario, U.autoridad, U.habilitado, E.nombre AS nombreEmpresa, E.id_empresa FROM Empresa AS E INNER JOIN Usuario AS U ON E.id_empresa = U.id_empresa
+    WHERE U.usuario = usuarioI AND U.pass = passI AND U.habilitado = 1 LIMIT 1;
+END $$ DELIMITER ;
+
+
+
+#-- CREAR USUARIO
+# ----- CREA UN NUEVO USUARIO
+DELIMITER $$
+CREATE PROCEDURE crearUsuario(
+    IN id_empresai INT,
+    IN usuarioi VARCHAR(40),
+    IN passi BLOB,
+    IN autoridadi VARCHAR(25),    
+    IN habilitadoi BOOLEAN
+)
+BEGIN
+    INSERT INTO Usuario(id_empresa, usuario, pass, autoridad, habilitado)VALUES(id_empresai, usuarioi, passi, autoridadi, habilitadoi);
+END $$ DELIMITER ;
+
+
+
+
+#-- ACTUALIZAR USUARIO
+# ----- ACTUALIZA UN USUARIO
+DELIMITER $$
+CREATE PROCEDURE actualizarUsuario(
+    IN id_usuarioi INT,
+    IN usuarioi VARCHAR(40),
+    IN passi BLOB,
+    IN autoridadi VARCHAR(25),    
+    IN habilitadoi BOOLEAN
+)
+BEGIN
+	UPDATE Usuario AS U 
+    SET
+        U.usuario = usuarioi,
+        U.pass = passi,
+        U.autoridad = autoridadi,
+        U.habilitado = habilitadoi
+    WHERE U.id_usuario = id_usuarioi;    	
+END $$ DELIMITER ;
+
+
+
+
+#-- OBTENER USUARIOS SEGUN ID DE LA EMPRESA --
+DELIMITER $$
+CREATE PROCEDURE obtenerUsuariosEmpresa(
+    IN id_empresai INT UNSIGNED
+)
+BEGIN
+    SELECT U.id_usuario, U.usuario, AES_DECRYPT(U.pass, "En_busca_de_la_libertad_1521") AS pass, U.autoridad, U.habilitado FROM Usuario AS U WHERE U.id_empresa = id_empresai;
+END $$ DELIMITER ;
+
+
+#-----------------------------------------  TABLA GRADO ---------------------------------------
+# -- CREAR GRADO
+# -- CREA UN NUEVO GRADO
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE crearGrado(
+    IN id_empresai INT,
+    IN nombrei VARCHAR(60),  
+    IN imgi VARCHAR(60)
+)
+BEGIN
+    INSERT INTO Grado(id_empresa, nombre, img)VALUES(id_empresai, nombrei, imgi);
+END $$ DELIMITER ;
+
+
+#-- ACTUALIZAR GRADO
+DELIMITER $$
+CREATE PROCEDURE actualizarGrado(
+    IN id_gradoi INT,
+    IN nombrei VARCHAR(40),  
+    IN habilitadoi BOOLEAN
+)
+BEGIN
+	UPDATE Grado AS U 
+    SET
+        U.nombre = nombrei,
+        U.habilitado = habilitadoi
+    WHERE U.id_grado = id_gradoi;    	
+END $$ DELIMITER ;
+
+
+
+#-- DESHABILITAR GRADO
+DELIMITER $$
+CREATE PROCEDURE deshabilitarGrado(
+    IN id_gradoi INT
+)
+BEGIN
+	UPDATE Grado AS U 
+    SET
+        U.habilitado = 0
+    WHERE U.id_grado = id_gradoi;    	
+END $$ DELIMITER ;
+
+
+
+#-- OBTENER GRADOS SEGUN ID DE LA EMPRESA --
+DELIMITER $$
+CREATE PROCEDURE obtenerGradosEmpresa(
+    IN id_empresai INT UNSIGNED
+)
+BEGIN
+	SELECT G.id_grado, G.nombre, G.habilitado, G.img
+    FROM Grado AS G
+    WHERE G.id_empresa = id_empresai AND G.habilitado = 1;    
+END $$ DELIMITER ;
+
+
+#-----------------------------------------  TABLA ESTUDIANTE ---------------------------------------
+# ----- CREA UN NUEVO ESTUDIANTE
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE crearEstudiante(
+    IN id_gradoi INT,
+    IN nombrei VARCHAR(60),
+    IN imgEstudiantei LONGBLOB,
+    IN responsablei VARCHAR(60),    
+    IN imgResponsablei LONGBLOB,
+	IN telefonoi VARCHAR(60)
+)
+BEGIN
+    INSERT INTO Estudiante(id_grado, nombre, imgEstudiante, responsable, imgResponsable, telefono)VALUES(id_gradoi, nombrei, imgEstudiantei, responsablei, imgResponsablei, telefonoi);
+END $$ DELIMITER ;
+
+
+# ----- ACTUALIZA UN ESTUDIANTE
+DELIMITER $$
+CREATE PROCEDURE actualizarEstudiatne(
+    IN id_estudiantei INT,
+    IN nombrei VARCHAR(60),
+    IN imgEstudiantei LONGBLOB,
+    IN responsablei VARCHAR(60),    
+    IN imgResponsablei LONGBLOB,
+	IN telefonoi VARCHAR(60)
+)
+BEGIN
+	UPDATE Estudiante AS U 
+    SET        
+        U.nombre = nombrei,
+        U.imgEstudiante = imgEstudiantei,
+        U.responsable = responsablei,
+        U.imgResponsable = imgResponsablei,
+        U.telefonoi = telefono
+    WHERE U.id_estudiante = id_estudiantei;    	
+END $$ DELIMITER ;
+
+
+
+#-----------------------------------------  TABLA ASISTENCIA ---------------------------------------
+# ----- CREA ASISTENCIAS DE UNA FECHA ESPECIFICA.
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE crearAsistencias(
+    IN id_gradoi INT,
+    IN fechai DATE
+)
+BEGIN
+    INSERT INTO Asistencia(fecha, id_estudiante)
+    SELECT fechai AS fecha, E.id_estudiante 
+    FROM Estudiante AS E 
+    WHERE E.id_grado = id_gradoi;
+    SELECT E.id_estudiante, E.nombre, E.imgEstudiante, E.responsable, E.imgResponsable, E.telefono, A.id_asistencia, A.fecha, A.horaEntrada, A.horaSalida
+    FROM Estudiante AS E INNER JOIN Asistencia AS A ON E.id_estudiante = A.id_estudiante
+    WHERE E.id_grado = id_gradoi AND A.fecha = fechai; 
+END $$ DELIMITER ;
+
+
+
+# ----- ACTUALIZAR ASISTENCIA ENTRADA
+DELIMITER $$
+CREATE PROCEDURE actualizarAsistenciaIN(
+    IN id_asistenciai INT,
+    IN horai VARCHAR(10))
+BEGIN
+	UPDATE Asistencia AS A 
+    SET        
+        A.horaEntrada = horai
+    WHERE A.id_asistencia = id_asistenciai;    	
+END $$ DELIMITER ;
+
+
+# ----- ACTUALIZAR ASISTENCIA SALIDA
+DELIMITER $$
+CREATE PROCEDURE actualizarAsistenciaOUT(
+    IN id_asistenciai INT,
+    IN horai VARCHAR(10))
+BEGIN
+	UPDATE Asistencia AS A 
+    SET        
+        A.horaSalida = horai
+    WHERE A.id_asistencia = id_asistenciai;    	
+END $$ DELIMITER ;
+
+
+#-- OBTENER ASISTENCIAS SEGUN ID DE GRADO Y FECHA --
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE obtenerAsistencias(
+    IN id_gradoi INT,
+    IN fechai DATE
+)
+BEGIN    
+    SELECT E.id_estudiante, E.nombre, E.imgEstudiante, E.responsable, E.imgResponsable, E.telefono, A.id_asistencia, A.fecha, A.horaEntrada, A.horaSalida
+    FROM Estudiante AS E INNER JOIN Asistencia AS A ON E.id_estudiante = A.id_estudiante
+    WHERE E.id_grado = id_gradoi AND A.fecha = fechai; 
+END $$ DELIMITER ;
+
+
+
+
+

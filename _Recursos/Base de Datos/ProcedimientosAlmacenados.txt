@@ -148,7 +148,7 @@ END $$ DELIMITER ;
 #-----------------------------------------  TABLA ESTUDIANTE ---------------------------------------
 # ----- CREA UN NUEVO ESTUDIANTE
 DELIMITER $$
-CREATE PROCEDURE crearEstudiante(
+CREATE OR REPLACE PROCEDURE crearEstudiante(
     IN id_gradoi INT,
     IN nombrei VARCHAR(60),
     IN imgEstudiantei VARCHAR(60),
@@ -158,6 +158,9 @@ CREATE PROCEDURE crearEstudiante(
 )
 BEGIN
     INSERT INTO Estudiante(id_grado, nombre, imgEstudiante, responsable, imgResponsable, telefono)VALUES(id_gradoi, nombrei, imgEstudiantei, responsablei, imgResponsablei, telefonoi);
+    SELECT *
+    FROM Estudiante AS E 
+    WHERE E.id_grado = id_gradoi AND E.nombre = nombrei LIMIT 1;
 END $$ DELIMITER ;
 
 

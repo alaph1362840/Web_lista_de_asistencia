@@ -3,7 +3,7 @@
     include 'Consulta.php';
     $tipo_consulta = 2; 
     $sql = '
-        CALL obtenerAsistencias('.$_SESSION['id_grado'].');
+        CALL obtenerAsistencias('.$_POST['id_grado'].', "'.$_POST['fecha'].'");
     ';
     //echo "sql: ".$sql;
 

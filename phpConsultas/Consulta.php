@@ -19,12 +19,13 @@
             $this->datos["hay_datos"] = false;
             $this->datos["datos"]      = [];
             $this->tipo_consulta       = $tipo_consulta;
-            $this->sql                 = $sql;            
+            $this->sql                 = 
+            $sql;            
             //para coneccion:
             $usuario     = "root";
             $pass	     = "";
-            $servidor    = "localhost";
-            $nombre_base = "listaAsistencia3";
+            $servidor    = "localhost";         
+            $nombre_base = "listaAsistenciaB";
             $this->coneccion = mysqli_connect($servidor,$usuario,$pass)or die('No se puede conectar al servidor');
             mysqli_select_db($this->coneccion,$nombre_base);
             mysqli_set_charset($this->coneccion, "utf8");
