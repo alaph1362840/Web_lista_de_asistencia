@@ -163,7 +163,7 @@ END $$ DELIMITER ;
 
 # ----- ACTUALIZA UN ESTUDIANTE
 DELIMITER $$
-CREATE PROCEDURE actualizarEstudiatne(
+CREATE OR REPLACE PROCEDURE actualizarEstudiatne(
     IN id_estudiantei INT,
     IN nombrei VARCHAR(60),
     IN imgEstudiantei LONGBLOB,
@@ -178,8 +178,19 @@ BEGIN
         U.imgEstudiante = imgEstudiantei,
         U.responsable = responsablei,
         U.imgResponsable = imgResponsablei,
-        U.telefonoi = telefono
+        U.telefono = telefonoi
     WHERE U.id_estudiante = id_estudiantei;    	
+END $$ DELIMITER ;
+
+
+# ----- ELIMINAR UN ESTUDIANTE
+# NOTA: NO USAR AS
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE eliminarEstudiante(
+    IN id_estudiantei INT
+)
+BEGIN
+	DELETE FROM Estudiante WHERE id_estudiante = id_estudiantei;    	
 END $$ DELIMITER ;
 
 

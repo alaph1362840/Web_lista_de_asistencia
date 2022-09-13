@@ -1,5 +1,6 @@
 var listaAsistencias = [];
 var id_estudiante_actualizar = -1;
+var id_estudiante_eliminar = -1;
 
 //--FORMULARIOS
 const frmAddEstudiante = document.getElementById('frmAddEstudiante');
@@ -69,7 +70,7 @@ frmEditEstudiante.addEventListener('submit', (e) => {
 		dataType: "json"        
 	})
 	.done(function( data ) {
-        console.log(data);		
+        //console.log(data);		
 		if (data.se_ejecuto) {
 			$('#modalEditEstu').modal('hide');
             alertify.success("Estudiante editado con exito.");
@@ -80,9 +81,9 @@ frmEditEstudiante.addEventListener('submit', (e) => {
 	})
 	.fail(function(jqXHR, textStatus, errorThrown) {
 		alertify.error("Error" + errorThrown);
-        console.log("error:" + errorThrown);
-        console.log("textStatus:" + textStatus);
-        console.log(jqXHR);
+        // console.log("error:" + errorThrown);
+        // console.log("textStatus:" + textStatus);
+        // console.log(jqXHR);
 
 	});
 });
@@ -233,7 +234,7 @@ function crearAsistencias() {
                                     <div id="" class=" UserEditDelet hide col-auto d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
                                         <div class="contImagenEdit" data-bs-toggle="modal" data-bs-target="#modalEditEstu" onclick="cargarEstudianteActualizar(${element.id_estudiante})">                          
                                         </div>
-                                        <div class="contImagenDelet" data-bs-toggle="modal" data-bs-target="#modalDeletEstu">
+                                        <div class="contImagenDelet" data-bs-toggle="modal" data-bs-target="#modalDeletEstu" onclick="eliminarEstudiante(${element.id_estudiante})" >
                                         </div>
                                     </div>                    
                                     <!-- HORA DE ENTRADA Y SALIDA -->
@@ -348,7 +349,7 @@ function cargarAsistencias() {
                                     <div id="" class=" UserEditDelet hide col-auto d-flex align-items-center p-0 ms-md-auto mx-auto mb-md-0 mb-2">
                                         <div class="contImagenEdit" data-bs-toggle="modal" data-bs-target="#modalEditEstu" onclick="cargarEstudianteActualizar(${element.id_estudiante})">                          
                                         </div>
-                                        <div class="contImagenDelet" data-bs-toggle="modal" data-bs-target="#modalDeletEstu">
+                                        <div class="contImagenDelet" data-bs-toggle="modal" data-bs-target="#modalDeletEstu" onclick="eliminarEstudiante(${element.id_estudiante})">
                                         </div>
                                     </div>                    
                                     <!-- HORA DE ENTRADA Y SALIDA -->
@@ -427,3 +428,33 @@ function cargarEstudianteActualizar(id) {
         $("#imgRespopnsableE").attr("src", urlImgRespo);        
     }
 }
+
+function eliminarEstudiante(id) {
+    id_estudiante_eliminar = id;
+}
+
+$("#btnEliminarEstud").click(function (e) { 
+    e.preventDefault();
+    var datos ={       
+        "id_estudiante":id_estudiante_eliminar
+    }
+	//console.log(datos);
+	$.ajax({
+		type: "POST",
+		url: "phpConsultas/eliminarEstudiante.php",
+		data: datos,
+		dataType: "json",        
+	})
+	.done(function( data ) {		
+		if (data.se_ejecuto) {
+			$('#modalDeletEstu').modal('hide');
+            alertify.success("Estudiante eliminado con exito.");		
+			cargarAsistencias();
+		} else {
+			alertify.error("Error, Al eliminar estudiante datos invalidos.");
+		}				          
+	})
+	.fail(function(jqXHR, textStatus, errorThrown) {
+		alertify.error("Error" + errorThrown);		
+	}); 
+});
