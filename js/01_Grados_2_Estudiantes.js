@@ -246,7 +246,8 @@ function crearAsistencias() {
                         </div>
                     `;
                 });
-                $("#cajaPrincipalAsistencias").html(cadena);            
+                $("#cajaPrincipalAsistencias").html(cadena);
+                verificarEdicionEstudiantes();            
                 //comprobarOcultos();
             } else {
                 alertify.error("Ocurrio un error al crear las asistencias, posibles datos duplicados, intenta cambiar la fecha para crear nuevos datos");
@@ -361,7 +362,8 @@ function cargarAsistencias() {
                         </div>
                     `;
                 });
-                $("#cajaPrincipalAsistencias").html(cadena);            
+                $("#cajaPrincipalAsistencias").html(cadena);
+                verificarEdicionEstudiantes();            
                 //comprobarOcultos();
             } else {
                 alertify.error("Ocurrio un error al obtener los asistencias.");
@@ -458,3 +460,76 @@ $("#btnEliminarEstud").click(function (e) {
 		alertify.error("Error" + errorThrown);		
 	}); 
 });
+
+//Habilitar edidciones de estudiantes
+$("#habiEdicionU").change(function (e) { 
+    e.preventDefault();
+    verificarEdicionEstudiantes();
+});
+
+function verificarEdicionEstudiantes() {
+    if( $("#habiEdicionU").prop('checked') ) {
+        $(".UserEditDelet").removeClass('hide');
+        $(".horaInOut").addClass('hide');
+    }else{
+        $(".horaInOut").removeClass('hide');
+        $(".UserEditDelet").addClass('hide');
+    }
+}
+
+// --------------------------------------------CREACION DE EXCEL -------------------------------------------
+$("#btnExportar").click(function (e) { 
+    e.preventDefault();
+    exportarExcel();    
+});
+
+function exportarExcel() {
+    var gradoActual = "";
+    listaGrados.forEach(element => {
+        if (element.id_grado ==  id_grado_actual) {
+            gradoActual = element;
+        }
+    });
+    //EXPORTACION ASISTENCIAS
+    //creacion de libro
+    var wb = XLSX.utils.book_new();
+    //modificar atributos
+    wb.Props = {
+        Title: gradoActual.nombre,
+        Subject: "Lista de Asistencia",
+        Author: "Brayan",
+        CreatedDate: new Date()
+    };
+    //creacion de hoja de trabajo
+    wb.SheetNames.push("Asistencia");
+    //asigancion de datos:
+    //preparacion de arreglo
+    var arrOarr = [];
+    arrOarr.push(["ESTUDIANTE", "RESPONSABLE", "TELEFONO", "HORA DE ENTRADA", "HORA DE SALIDA"]);
+    listaAsistencias.forEach(element => {
+        var centi = [element.nombre, element.responsable, element.telefono, element.horaEntrada, element.horaSalida];
+        arrOarr.push(centi);
+    });
+    var ws = XLSX.utils.aoa_to_sheet(arrOarr);
+    //agregamos el arreglo a la hoja de trabajo
+    //IMPORTANTE HAY QUE COLOCAR EL MISMO NOMBRE DE LA HOJA QUE SE CREO ANTERIORMENTE
+    wb.Sheets["Asistencia"] = ws;
+    //funcion de escritura en binario
+    var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+
+    saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), gradoActual.nombre + ' Asistencias '+$("#fecha").val()+'.xlsx');
+
+}
+
+//convertir binario a octeto
+function s2ab(s) {
+    var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
+    var view = new Uint8Array(buf); //create uint8array as viewer
+    for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+    return buf;   
+}
+
+function crea(params) {
+    
+}
+    

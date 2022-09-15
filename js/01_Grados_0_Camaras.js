@@ -317,13 +317,3 @@ $("#switchFotoE").change(function (e) {
     }
 });
 
-$("#habiEdicionU").change(function (e) { 
-    e.preventDefault();
-    if( $(this).prop('checked') ) {
-        $(".UserEditDelet").removeClass('hide');
-        $(".horaInOut").addClass('hide');
-    }else{
-        $(".horaInOut").removeClass('hide');
-        $(".UserEditDelet").addClass('hide');
-    }
-});

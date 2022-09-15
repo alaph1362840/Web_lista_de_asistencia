@@ -39,4 +39,3 @@ function deshabilitarGrado() {
 		alertify.error("Error" + errorThrown);		
 	});    
 }
-

@@ -474,6 +474,8 @@
     <script src="librerias/bootstrap-5.0.2/js/bootstrap.min.js"></script>
     <script src="librerias/imgeSelet/js/dd.min.js"></script>
     <script src="librerias/alertifyjs/alertify.min.js"></script>
+    <script src="librerias/sheetjs/xlsx.full.min.js"></script>
+    <script src="librerias/FileSaver/FileSaver.min.js"></script>  
     <!-- MIS JS -->
     <!-- SOLO PARA ADMINISTRADORES -->
     <script src="js/01_Grados_0_Camaras.js"></script>
