@@ -31,7 +31,11 @@ formRegistro.addEventListener('submit', (e) => {
 			});
 			if (p.id_usuario != -1) {
 				alertify.success("Usuario ingresado con éxito");
-				location.href ="01_Grados.php";
+				if (p.autoridad =="baja") {
+					location.href ="01_Grados1.php";
+				} else {
+					location.href ="01_Grados2.php";
+				}
 			} else {
 				alertify.error("Datos duplicados! Por favor cambie el nombre del usuario, y eso no funciona cambie el nombre de Empresa");
 			}			               
@@ -64,8 +68,17 @@ formIngreso.addEventListener('submit', (e) => {
 	.done(function( data ) {
 		if (data.se_ejecuto) {
 			if (data.hay_datos) {
+				lista = data.datos;
+				var p="";
+				lista.forEach(element => {
+					p = element;
+				});
 				alertify.success("Usuario ingresado con éxito");
-				location.href ="01_Grados.php";				
+				if (p.autoridad =="baja") {
+					location.href ="01_Grados1.php";
+				} else {
+					location.href ="01_Grados2.php";
+				}			
 			} else {
 				alertify.error("Error! Usuario o contraseña incorrectas");
 			} 	

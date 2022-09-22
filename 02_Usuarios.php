@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    $_SESSION['pag'] = 3;
     include 'phpConsultas/verificarUsuario.php';     
 ?>
 
@@ -43,7 +44,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
                 <ul class="navbar-nav ">
                     <li class="nav-item ">
-                        <a class="nav-link " href="01_Grados.php">
+                        <a class="nav-link " href="01_Grados2.php">
                             <i class="fas fa-school"></i>&nbsp; GRADOS
                         </a>
                     </li>
