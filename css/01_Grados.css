@@ -459,3 +459,12 @@
     border-color: black;
     margin-left: 0px;
 }
+
+#btnFinalizarDia{
+    color: rgb(131, 2, 2);
+    background-color: rgb(250, 206, 141);
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    margin-left: 0px;
+}

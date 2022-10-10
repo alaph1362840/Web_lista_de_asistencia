@@ -1,3 +1,4 @@
+<!-- PAGINA SIN DERECHOS DE ADMINISTRADOR -->
 <?php 
     session_start();
     $_SESSION['pag'] = 1;
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="librerias/tipografia/tipografia.css">
     <link rel="stylesheet" href="librerias/imgeSelet/css/dd.css">
     <link rel="stylesheet" href="librerias/alertifyjs/css/alertify.min.css">
+    <link rel="stylesheet" href="librerias/Tippy/tippy.css">
 
     <!-- MIS CSS -->   
     <link rel="stylesheet" href="css/generales.css">
@@ -67,7 +69,7 @@
     <!-- CONTENIDO ASISTENCIA-->
     <div id="contenidoAsistencia" class="container contenido hide">
         <h3 id="btnAtrasA" class="text-center mt-3"><i class="fas fa-arrow-left btnAtras boton"></i></h3>
-        <h1 class="text-center mb-0 mt-1 tituloPrincipal"> NOMBRE DE GRADO</h1>
+        <h1 class="text-center mb-0 mt-1 tituloPrincipal">NOMBRE DE GRADO</h1>
         <!-- FECHA -->
         <div class="row my-2">
             <div class="col-lg-4 col-md-6 col-sm-8 col-10  mx-auto">
@@ -87,13 +89,14 @@
     <!-- LIBRERIAS JS-->
     <script src="librerias/jquery-3.6.0.min.js"></script>
     <script src="librerias/bootstrap-5.0.2/js/bootstrap.min.js"></script>
+    <script src="librerias/Tippy/tippy.umd.min.js"></script>
     <script src="librerias/imgeSelet/js/dd.min.js"></script>
     <script src="librerias/alertifyjs/alertify.min.js"></script>
     <script src="librerias/sheetjs/xlsx.full.min.js"></script>
     <script src="librerias/FileSaver/FileSaver.min.js"></script>  
     <!-- MIS JS -->
     <!-- SOLO PARA ADMINISTRADORES -->
-    <script src="js/01_Grados2.js"></script>
+    <script src="js/01_Grados1.js"></script>
 </body>
 
 </html>

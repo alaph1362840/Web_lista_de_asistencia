@@ -83,7 +83,7 @@ formIngreso.addEventListener('submit', (e) => {
 				alertify.error("Error! Usuario o contraseña incorrectas");
 			} 	
 		} else {
-			alertify.error("Error, intentalo nuevamente");
+			alertify.error("Error, La consulta no se ejecuto intentalo nuevamente,");
 		}           
 	})
 	.fail(function(jqXHR, textStatus, errorThrown) {

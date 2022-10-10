@@ -1,3 +1,4 @@
+<!-- PAGINA DE ADMINISTRADOR -->
 <?php 
     session_start();
     $_SESSION['pag'] = 2;
@@ -19,6 +20,8 @@
     <link rel="stylesheet" href="librerias/tipografia/tipografia.css">
     <link rel="stylesheet" href="librerias/imgeSelet/css/dd.css">
     <link rel="stylesheet" href="librerias/alertifyjs/css/alertify.min.css">
+    <link rel="stylesheet" href="librerias/Tippy/tippy.css">
+    <link rel="stylesheet" href="librerias/MagnificPopup/magnific-popup.css">
 
     <!-- MIS CSS -->   
     <link rel="stylesheet" href="css/generales.css">
@@ -93,6 +96,7 @@
                     <input id="fecha" class="form-control border-dark" type="date">                    
                     <span id="btnAddLista" class="input-group-text boton"><i class="fas fa-calendar-plus"></i></span>
                     <span id="btnExportar" class="input-group-text boton"><i class="fas fa-file-excel"></i></span>
+                    <span id="btnFinalizarDia" class="input-group-text boton" data-bs-toggle="modal" data-bs-target="#modalCloseDia" ><i class="far fa-stop-circle"></i></span>
                 </div>
             </div>            
         </div>
@@ -387,11 +391,11 @@
     </div>
 
     <!-- MODAL ADD GRADO -->
-    <div class="modal fade" id="modalAddGrado" tabindex="-1" aria-labelledby="tituloMD2" aria-hidden="true">
+    <div class="modal fade" id="modalAddGrado" tabindex="-1" aria-labelledby="tituloMD6" aria-hidden="true">
         <div class="modal-dialog">
             <form id="frmAddGrado" class="modal-content">
                 <div class="modal-header barrasModal">
-                    <h5 class="modal-title" id="tituloMD2">Agregar Nivel:</h5>
+                    <h5 class="modal-title" id="tituloMD6">Agregar Nivel:</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -471,16 +475,43 @@
         </div>
     </div>
 
+    <!-- MODAL CERAR DIA -->
+    <div class="modal fade" id="modalCloseDia" tabindex="-1" aria-labelledby="tituloMD5" aria-hidden="true">
+        <div class="modal-dialog">
+            <div id="" class="modal-content">
+                <div class="modal-header barrasModal">
+                    <h5 class="modal-title" id="tituloMD5">Cerrar Dia:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="alert alert-danger">Realmente deseas cerrar el dia? Ya no se podra marcar horas de entrada o salida.</h4>
+                </div>
+                <div class="modal-footer barrasModal">
+                    <button type="button" class="btn boton me-1 btnModalCerrar2" data-bs-dismiss="modal">
+                        <i class="far fa-times"></i> <i class="sinFormato btnCancelModal" id="">Cancelar</i>
+                    </button>
+                    <button id="btnDeleteGrupo" type="" class="btn ms-0 btnModalConfirmar">
+                        <i class="fas fa-ban"></i> <i class="sinFormato" id="btnAddGrupol" onclick="cerrarDia()">Cerrar Dia</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- LIBRERIAS JS-->
     <script src="librerias/jquery-3.6.0.min.js"></script>
-    <script src="librerias/bootstrap-5.0.2/js/bootstrap.min.js"></script>
+    <script src="librerias/bootstrap-5.0.2/js/bootstrap.min.js"></script>    
     <script src="librerias/imgeSelet/js/dd.min.js"></script>
     <script src="librerias/alertifyjs/alertify.min.js"></script>
     <script src="librerias/sheetjs/xlsx.full.min.js"></script>
-    <script src="librerias/FileSaver/FileSaver.min.js"></script>  
+    <script src="librerias/FileSaver/FileSaver.min.js"></script>
+    <script src="librerias/popper/popper.min.js"></script>
+    <script src="librerias/Tippy/tippy.umd.min.js"></script>
+    <script src="librerias/MagnificPopup/jquery.magnific-popup.min.js"></script>  
     <!-- MIS JS -->
     <!-- SOLO PARA ADMINISTRADORES -->
-    <script src="js/01_Grados1.js"></script>
+    <script src="js/01_Grados2.js"></script>
+    <script src="js/toltips.js"></script>
     
 </body>
 
