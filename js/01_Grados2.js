@@ -203,7 +203,7 @@ $listaDeDispositivosE.onchange = () => {
 const mostrarStream = idDeDispositivo => {
   _getUserMedia({
         video: {
-          width: 200, height: 200,
+          width: 400, height: 400,
           // Justo aqui­ indicamos cual dispositivo usar
           deviceId: idDeDispositivo,
         }
@@ -365,8 +365,6 @@ $(document).ready(function () {
     cargarGrados();
 });
 
-
-
 $("#habiEdicionG").change(function (e) { 
     e.preventDefault();
     comprobarOcultos();
@@ -526,7 +524,6 @@ function deshabilitarGrado() {
 		alertify.error("Error" + errorThrown);		
 	});    
 }
-
 
 //----------------------------------------------------------------------GRADOS ESTUDIANTES ----------------------------------------------------------
 var listaAsistencias = [];
@@ -742,7 +739,7 @@ function crearAsistencias() {
                             <div class="col-lg-10 mx-auto">
                                 <div class="row boxAsis px-1">
                                     <!-- IMAGENES DE PADRE E HIJO -->
-                                    <div class="col-auto mx-md-0 my-md-0 my-2  mx-auto  d-flex align-items-center justify-content-center  p-0">
+                                    <div id="${element.id_asistencia}" class="col-auto mx-md-0 my-md-0 my-2  mx-auto  d-flex align-items-center justify-content-center  p-0">
                                         <div class="contImagen">
                                             <img class="imgen" src="data:image/png;base64,${element.imgEstudiante}">
                                         </div>
@@ -772,6 +769,7 @@ function crearAsistencias() {
                     `;
                 });
                 $("#cajaPrincipalAsistencias").html(cadena);
+                zoomImagenes();
                 verificarEdicionEstudiantes();            
                 //comprobarOcultos();
             } else {
@@ -858,7 +856,7 @@ function cargarAsistencias() {
                             <div class="col-lg-10 mx-auto">
                                 <div class="row boxAsis px-1">
                                     <!-- IMAGENES DE PADRE E HIJO -->
-                                    <div class="col-auto mx-md-0 my-md-0 my-2  mx-auto  d-flex align-items-center justify-content-center  p-0">
+                                    <div id="${element.id_asistencia}" class="col-auto mx-md-0 my-md-0 my-2  mx-auto  d-flex align-items-center justify-content-center  p-0">
                                         <div class="contImagen">
                                             <img class="imgen" src="data:image/png;base64,${element.imgEstudiante}">
                                         </div>
@@ -888,6 +886,7 @@ function cargarAsistencias() {
                     `;
                 });
                 $("#cajaPrincipalAsistencias").html(cadena);
+                zoomImagenes();
                 verificarEdicionEstudiantes();            
                 //comprobarOcultos();
             } else {
@@ -901,6 +900,29 @@ function cargarAsistencias() {
     } else {
         alertify.error("Error, Debes ingresar una fecha valido para obtener la informacion");
     }    
+}
+//CARRUSEL DE IMAGENES DE ESTUDIANTE O REPRESENTANTE
+function zoomImagenes() {
+    // delete all templates
+    $.magnificPopup.instance.popupsCache = {};
+    listaAsistencias.forEach(element => {
+        $('#'+element.id_asistencia).magnificPopup({
+            items: [
+                {
+                    src: "data:image/png;base64,"+element.imgEstudiante,
+                    type: 'image' 
+                },
+                {
+                    src: "data:image/png;base64,"+element.imgResponsable,
+                    type: 'image' 
+                }
+            ],
+            closeBtnInside: true,
+            gallery: {
+                enabled: true
+            }
+        });
+    });
 }
 
 $("#btnAddLista").click(function (e) { 
@@ -1053,8 +1075,6 @@ function s2ab(s) {
     for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
     return buf;   
 }
-
-
 
 //----------------- funcion de cerrar dia.-------
 function cerrarDia() {
